@@ -5,9 +5,9 @@
 
 <style>
 body{
-background:#111;
-color:white;
-font-family:Arial;
+background:linear-gradient(135deg,#FFE4EC,#FFF5F8,#FFFFFF);
+color:#444;
+font-family:Poppins,Arial,sans-serif;
 text-align:center;
 padding:40px;
 }
@@ -15,26 +15,59 @@ padding:40px;
 .box{
 max-width:500px;
 margin:auto;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+animation:fade .8s;
 }
-
-button{
-padding:12px 25px;
+  
+  button{
+padding:14px 28px;
 margin-top:20px;
 font-size:18px;
+font-weight:bold;
 border:none;
-border-radius:10px;
+border-radius:30px;
 cursor:pointer;
-}
+background:#FF7EB3;
+color:white;
+box-shadow:0 6px 15px rgba(255,126,179,.35);
+transition:.3s;
+  }
 
 .option{
 display:block;
-margin:10px;
-padding:12px;
-background:#333;
-border-radius:10px;
+margin:12px;
+padding:15px;
+border:none;
+border-radius:18px;
 cursor:pointer;
+font-weight:bold;
+transition:.3s;
+color:white;
 }
 
+.option:nth-child(1){background:#FF8FAB;}
+.option:nth-child(2){background:#FFD166;color:#333;}
+.option:nth-child(3){background:#7BC96F;}
+.option:nth-child(4){background:#A78BFA;}
+
+.option:hover{
+transform:scale(1.05);
+}
+
+ @keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+} 
+  
 .option:hover{
 background:#555;
 }
@@ -46,7 +79,11 @@ background:#555;
 
 <div class="box">
 
-<h1>🤍 Seberapa Kamu Kenal Cecel? 🤍</h1>
+<h1>🌷 Seberapa Kamu Kenal Cecel? 🌷</h1>
+
+<p style="font-size:18px;">
+Selesaikan tantangan kecil ini untuk membuka surat rahasia. 🤍
+</p>
 
 <h3 id="question"></h3>
 
@@ -136,7 +173,9 @@ alert("kok bisa salah sih ganteng 😾");
 
 }else{
 
-alert(item[1]);
+setTimeout(()=>{
+alert(item[1]+" 💕");
+},200);
 
 nomor++;
 
@@ -159,6 +198,11 @@ window.location.href="surat.html";
 }
 
 </script>
+
+  <div style="position:fixed;top:20px;left:20px;font-size:25px;">🦋</div>
+<div style="position:fixed;top:80px;right:30px;font-size:22px;">🌸</div>
+<div style="position:fixed;bottom:30px;left:40px;font-size:20px;">🤍</div>
+<div style="position:fixed;bottom:50px;right:40px;font-size:24px;">✨</div>
 
 </body>
 </html>
