@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz Time</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:40px;
+}
+
+.box{
+max-width:500px;
+margin:auto;
+}
+
+button{
+padding:12px 25px;
+margin-top:20px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.option{
+display:block;
+margin:10px;
+padding:12px;
+background:#333;
+border-radius:10px;
+cursor:pointer;
+}
+
+.option:hover{
+background:#555;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🤍 Seberapa Kamu Kenal Cecel? 🤍</h1>
+
+<h3 id="question"></h3>
+
+<div id="answers"></div>
+
+</div>
+
+<script>
+
+let nomor=0;
+
+const quiz=[
+
+{
+q:"1. Makanan yang menaikkan mood Cecel?",
+a:[
+["Miee","Aku dikasih semua juga suka, tapi lebih suka kamu hahaha 🙀🤍"],
+["Dimsum",false],
+["Terang Bulan",false],
+["Nasi Goreng",false]
+]
+},
+
+{
+q:"2. Warna favorite Cecel?",
+a:[
+["Putih",false],
+["Abu",false],
+["Ungu","Wahh otaknya tuaa berapa GB ya kok inget? 😽💜"],
+["Hitam",false]
+]
+},
+
+{
+q:"3. Hal yang paling disukai Cecel?",
+a:[
+["Matcha",false],
+["Kucing",false],
+["Dracin",false],
+["Kamu","Ihhh tuaa pede bangettt yaa 😼"]
+]
+},
+
+{
+q:"4. Motivasi buat Cecel 💌",
+text:true
+}
+
+];
+
+showQuestion();
+
+function showQuestion(){
+
+let q=quiz[nomor];
+
+document.getElementById("question").innerHTML=q.q;
+
+let ans=document.getElementById("answers");
+
+ans.innerHTML="";
+
+if(q.text){
+
+ans.innerHTML=`
+<input id="pesan" style="width:90%;padding:12px;border-radius:10px;"><br><br>
+<button onclick="selesai()">Lanjut ❤️</button>
+`;
+
+return;
+
+}
+
+q.a.forEach(item=>{
+
+let btn=document.createElement("button");
+
+btn.className="option";
+
+btn.innerHTML=item[0];
+
+btn.onclick=function(){
+
+if(item[1]==false){
+
+alert("kok bisa salah sih ganteng 😾");
+
+}else{
+
+alert(item[1]);
+
+nomor++;
+
+showQuestion();
+
+}
+
+};
+
+ans.appendChild(btn);
+
+});
+
+}
+
+function selesai(){
+
+window.location.href="surat.html";
+
+}
+
+</script>
+
+</body>
+</html>
