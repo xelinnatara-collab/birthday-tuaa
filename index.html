@@ -40,8 +40,14 @@ margin-top:20px;
 <button onclick="openGift()">Open Gift 🎁</button>
 
 <script>
-function openGift(){
-alert("I LOVEE UUU MOREE MOREE MOREE 🤍");
+function openGift() {
+  let pass = prompt("💌 Tanggal awal kita kenal?\nKalau nggak tahu jangan lupa tanya bocilmu yaa 🤍");
+
+  if(pass == "161023"){
+    window.location.href = "quiz.html";
+  }else{
+    alert("yahhh kok bisa salah sihh😒 Coba inget-inget lagi yaa botak.");
+  }
 }
 </script>
 
