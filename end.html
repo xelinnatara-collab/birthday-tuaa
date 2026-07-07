@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tua</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffdce8,#fff7fb,#ffffff);
+overflow:hidden;
+text-align:center;
+}
+
+.container{
+z-index:2;
+padding:20px;
+}
+
+h1{
+font-size:45px;
+color:#ff5c9f;
+margin-bottom:20px;
+}
+
+p{
+font-size:20px;
+color:#555;
+line-height:1.8;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:fall linear infinite;
+opacity:.8;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-100px);
+}
+
+100%{
+transform:translateY(110vh);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎉 Happy Birthday, Tua 🎉</h1>
+
+<p>
+Thank you for existing in a chapter of my life.<br>
+No matter where life takes us,<br>
+I'll always wish the best for you. 🤍
+</p>
+
+<h2>— Cecel 🤍</h2>
+
+</div>
+
+<script>
+
+for(let i=0;i<40;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=["🤍","💖","💕","💗"][Math.floor(Math.random()*4)];
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(3+Math.random()*4)+"s";
+
+heart.style.fontSize=(18+Math.random()*25)+"px";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
