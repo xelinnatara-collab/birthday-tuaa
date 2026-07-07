@@ -144,27 +144,23 @@ transform:translateY(0);
 .fadeButton{
 
 display:block;
+opacity:1;
+pointer-events:auto;
 
-animation:fadeButton .8s ease;
+animation:fadeButton .8s ease forwards;
 
 }
 
 @keyframes fadeButton{
 
 from{
-
 opacity:0;
-
 transform:translateY(10px);
-
 }
 
 to{
-
 opacity:1;
-
 transform:translateY(0);
-
 }
 
 }
@@ -247,6 +243,8 @@ setTimeout(ketik,35);
 
 }else{
 
+nextBtn.style.opacity="1";
+nextBtn.style.pointerEvents="auto";
 nextBtn.classList.add("fadeButton");
 
 }
