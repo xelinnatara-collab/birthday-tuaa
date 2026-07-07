@@ -1,91 +1,170 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Letter 1</title>
+<title>A Letter For Tua</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  
+
 <style>
 
-body{
+*{
 margin:0;
-padding:30px;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
 background:linear-gradient(135deg,#F6F1EE,#ECE2DD,#E5D7D0);
+
 font-family:'Poppins',sans-serif;
-color:#555;
-line-height:1.7;
-letter-spacing:.3px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+min-height:100vh;
+
+padding:40px;
+
 }
 
 .card{
 
-max-width:750px;
-margin:auto;
+width:100%;
+max-width:820px;
+
 background:white;
-padding:35px;
-border-radius:24px;
-box-shadow:0 12px 30px rgba(109,41,50,.15);
-animation:fade .8s;
+
+padding:45px;
+
+border-radius:28px;
+
+box-shadow:0 18px 40px rgba(109,41,50,.15);
+
+animation:fadeCard 1s ease;
 
 }
 
 h1{
+
 font-family:'Cormorant Garamond',serif;
+
+font-size:45px;
+
 text-align:center;
-color:#6D2932
+
+color:#5B2333;
+
+margin-bottom:35px;
+
+letter-spacing:1px;
 
 }
 
-p{
-text-align:justify;
-  
-line-height:2;
+#typing{
+
 font-size:18px;
-text-align:justify;
+
+line-height:2;
+
+color:#4A3B39;
+
+white-space:pre-wrap;
+
+min-height:320px;
 
 }
 
 button{
-display:none;
-margin-top:30px;
-padding:15px 35px;
+
+opacity:0;
+pointer-events:none;
+display:block;
+
+margin:40px auto 0;
+
+padding:15px 38px;
+
 border:none;
+
 border-radius:40px;
-background:#6D2932;
+
+background:#5B2333;
+
 color:white;
+
 font-size:17px;
+
 font-weight:600;
+
 cursor:pointer;
-transition:.3s;
-box-shadow:0 8px 18px rgba(109,41,50,.25);
-}  
+
+transition:.35s ease;
+
+box-shadow:0 10px 25px rgba(91,35,51,.25);
+
+}
 
 button:hover{
-background:#8B3A3A;
+
+background:#7A3046;
+
 transform:translateY(-3px);
-box-shadow:0 12px 24px rgba(109,41,50,.35);
-}
-
-transform:scale(1.05);
-transition:.3s;
 
 }
 
-@keyframes fade{
+@keyframes fadeCard{
 
 from{
+
 opacity:0;
-transform:translateY(20px);
+
+transform:translateY(30px);
+
 }
 
 to{
+
 opacity:1;
+
 transform:translateY(0);
+
+}
+
+}
+
+.fadeButton{
+
+display:block;
+
+animation:fadeButton .8s ease;
+
+}
+
+@keyframes fadeButton{
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
 }
 
 }
@@ -100,21 +179,12 @@ transform:translateY(0);
 
 <h1>💌 A Letter For Tua 💌</h1>
 
-<p>
-
-happy birthday tuaaa, doa terbaik buat kamu yaa, sama seperti sebelumnya kamu harus selalu bahagiaaaa dan ini yang perlu di inget jaga kesehatannya dongg tuaa udah tua juga kok mangkell, selalu jadi orang baik dimana pun kamu berada kalo emang ga bisa setidaknya nya berubah jadi lebih baik dari hari hari sebelumnya, wujudkan apaa yang kamu impikan setinggi mungkin yaa agar nanti di masa tua ga ada penyesalan, buktiin ke semua orang kalo kamu bisa dan berhasil tapi kamu sekarang udah buktiin kalo kamu berhasill proundd off uu tuaaa.
-
-</p>
-
-<p>
-
-aku seneng banget bisa lihat kamu berubah jadi lebih baikkk kayak sekarang meskipun ga secara langsung tapi perubahan mu bener bener kerasa buat aku, dulu kamu kayak bocil kematian yang ga ada kerjaan tiap hari dibilangin behh susah bangettt aku berasa kayak radio rusak dimata kamu, dulu aku mikir ajam bisa ga ya berubah masa setiap hari pulang malem, rokokan, minum, ngebasis, nongkiii aja kerjaannya kayak ga ada arah hidup, ternyata kamu matahin pikiranku ya tuaa kamu sekarang udah se dewasa ini kamu bahkan bisa arahin aku yang mana yang baik mana yang buruk aku senenggg bangett ternyata apa yang aku pikirin tentang kamu, kamu buktiin kalo pemikiran ku itu salah.
-
-</p>
+<div id="typing"></div>
 
 <center>
 
-<button onclick="window.location.href='chapter2.html'">
+<button id="nextBtn"
+onclick="window.location.href='chapter2.html'">
 
 Next ➜
 
@@ -124,5 +194,68 @@ Next ➜
 
 </div>
 
-</body>
+  <script>
+
+const surat = `happy birthday tuaaa, doa terbaik buat kamu yaa, sama seperti sebelumnya kamu harus selalu bahagiaaaa dan ini yang perlu di inget jaga kesehatannya dongg tuaa udah tua juga kok mangkell.
+
+selalu jadi orang baik dimana pun kamu berada. kalau emang ga bisa, setidaknya berubah jadi lebih baik dari hari-hari sebelumnya. wujudkan apaa yang kamu impikan setinggi mungkin yaa agar nanti di masa tua ga ada penyesalan.
+
+buktiin ke semua orang kalau kamu bisa dan berhasil. tapi menurut aku... sekarang pun kamu udah berhasil ngebuktiin semuanya. i'm so proud of you, tuaaa. 🤍
+
+aku seneng banget bisa lihat kamu berubah jadi lebih baikkk kayak sekarang. meskipun ga secara langsung, tapi perubahanmu bener-bener kerasa buat aku.
+
+dulu kamu kayak bocil kematian yang ga ada kerjaan. tiap hari dibilangin, behhh susah bangettt. aku sampe berasa kayak radio rusak di mata kamu.
+
+aku dulu mikir...
+"ajam bisa ga ya berubah?"
+
+masa tiap hari pulang malem, ngerokok, minum, ngebasis, nongki terus kayak ga punya arah hidup.
+
+ternyata...
+kamu berhasil matahin semua omongan aku ya, tuaa.
+
+sekarang kamu udah sedewasa ini.
+
+kamu bahkan bisa ngajarin aku mana yang baik dan mana yang buruk.
+
+aku senenggg banget.
+
+ternyata semua yang dulu aku takutkan tentang kamu...
+kamu buktiin kalau semuanya salah.
+
+dan aku bangga banget sama versi kamu yang sekarang. 🤍`;
+
+const text = document.getElementById("typing");
+const nextBtn = document.getElementById("nextBtn");
+
+let i = 0;
+
+function ketik(){
+
+if(i < surat.length){
+
+text.innerHTML += surat.charAt(i);
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+
+i++;
+
+setTimeout(ketik,35);
+
+}else{
+
+nextBtn.classList.add("fadeButton");
+
+}
+
+}
+
+setTimeout(ketik,700);
+
+  </script>
+
+  </body>
 </html>
