@@ -1,91 +1,177 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Letter 2</title>
+<title>A Letter For Tua</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  
+
 <style>
 
-body{
+*{
 margin:0;
-padding:30px;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
 background:linear-gradient(135deg,#F6F1EE,#ECE2DD,#E5D7D0);
+
 font-family:'Poppins',sans-serif;
-color:#555;
-line-height:1.7;
-letter-spacing:.3px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+min-height:100vh;
+
+padding:40px;
+
 }
 
 .card{
 
-max-width:750px;
-margin:auto;
+width:100%;
+max-width:820px;
+
 background:white;
-padding:35px;
-border-radius:24px;
-box-shadow:0 12px 30px rgba(109,41,50,.15);
-animation:fade .8s;
+
+padding:45px;
+
+border-radius:28px;
+
+box-shadow:0 18px 40px rgba(109,41,50,.15);
+
+animation:fadeCard 1s ease;
 
 }
 
 h1{
+
 font-family:'Cormorant Garamond',serif;
+
+font-size:45px;
+
 text-align:center;
-color:#6D2932
+
+color:#5B2333;
+
+margin-bottom:35px;
+
+letter-spacing:1px;
 
 }
 
-p{
-text-align:justify;
-  
-line-height:2;
+#typing{
+
 font-size:18px;
-text-align:justify;
+
+line-height:2;
+
+color:#4A3B39;
+
+white-space:pre-wrap;
+
+min-height:320px;
 
 }
 
 button{
-display:none;
-margin-top:30px;
-padding:15px 35px;
+
+display:block;
+
+opacity:0;
+
+pointer-events:none;
+
+margin:40px auto 0;
+
+padding:15px 38px;
+
 border:none;
+
 border-radius:40px;
-background:#6D2932;
+
+background:#5B2333;
+
 color:white;
+
 font-size:17px;
+
 font-weight:600;
+
 cursor:pointer;
-transition:.3s;
-box-shadow:0 8px 18px rgba(109,41,50,.25);
+
+transition:.35s ease;
+
+box-shadow:0 10px 25px rgba(91,35,51,.25);
+
 }
 
 button:hover{
-background:#8B3A3A;
+
+background:#7A3046;
+
 transform:translateY(-3px);
-box-shadow:0 12px 24px rgba(109,41,50,.35);
-}
-
-transform:scale(1.05);
-transition:.3s;
 
 }
 
-@keyframes fade{
+@keyframes fadeCard{
 
 from{
+
 opacity:0;
-transform:translateY(20px);
+
+transform:translateY(30px);
+
 }
 
 to{
+
 opacity:1;
+
 transform:translateY(0);
+
+}
+
+}
+
+.fadeButton{
+
+display:block;
+
+opacity:1;
+
+pointer-events:auto;
+
+animation:fadeButton .8s ease forwards;
+
+}
+
+@keyframes fadeButton{
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
 }
 
 }
@@ -100,22 +186,12 @@ transform:translateY(0);
 
 <h1>💌 A Letter For Tua 💌</h1>
 
-<p>
-
-kata orang hidup itu bagaikan buku dan kalo ada yang tanya apa sih bab yang paling menyenangkan dan berkesan yang ingin aku ulang?? yaa yang jelas jawabannya bertemu denganmu dong pastinya, aku juga bakal mau kok kalo di suruh ulang bab itu terus menerus.
-
-</p>
-
-<p>
-
-aku berterima kasih banget sama tuhan udah ngenalin kamu ke aku, aku jadi tau ternyata ada yaa cowo yang bisa buat aku se cinta itu, ternyata ada yaa cowo yang buat aku mikir gimana caranya berubah jadi lebih baik, ternyata ada yaa cowo yang buat aku semangat jalanin hari hari yang melelahkan, aku bener bener berterima kasih buat selama ini ya tuaa, aku bakal selalu bilang makasih dan maaff karena ngerepotin kamu atau ucapan yang bikin kamu sakit hati dari aku, jangan dendam ya?? pokoknya harus dimaafin!!
-
-
-</p>
+<div id="typing"></div>
 
 <center>
 
-<button onclick="window.location.href='chapter3.html'">
+<button id="nextBtn"
+onclick="window.location.href='chapter3.html'">
 
 Next ➜
 
@@ -125,5 +201,97 @@ Next ➜
 
 </div>
 
+<script>
+
+const surat = `kata orang, hidup itu bagaikan sebuah buku.
+
+kalau ada yang tanya...
+
+"bab apa sih yang paling ingin aku ulang?"
+
+jawabannya gampang banget.
+
+bab dimana aku dipertemukan sama kamu.
+
+kalau boleh milih, aku juga mau kok ngulang bab itu berkali-kali.
+
+karena dari sekian banyak orang di dunia ini...
+
+aku bersyukur banget ternyata Tuhan ngenalin aku sama kamu.
+
+aku jadi sadar...
+
+ternyata ada ya cowok yang bisa bikin aku sayang sedalam itu.
+
+ternyata ada ya cowok yang tanpa sadar bikin aku pengen berubah jadi versi yang lebih baik.
+
+ternyata ada ya cowok yang bisa jadi alasan aku semangat buat jalanin hari-hari yang kadang capek dan melelahkan.
+
+dan orang itu...
+
+ya kamu, Tuaa. 🤍
+
+makasih ya...
+
+udah hadir di salah satu bab paling indah dalam hidup aku.
+
+makasih udah nemenin aku, dengerin cerita-cerita receh aku, ngadepin sifat aku yang kadang nyebelin, bahkan tetep sabar waktu aku banyak ngerepotin kamu.
+
+aku tau...
+
+aku juga pasti pernah ngomong sesuatu yang bikin kamu kecewa atau sakit hati.
+
+kalau ada kata-kata aku yang pernah ninggalin luka...
+
+aku minta maaf yaa.
+
+jangan disimpen jadi dendam.
+
+janji harus dimaafin. 😼🤍
+
+karena buat aku...
+
+semua kenangan tentang kamu selalu jadi kenangan yang pengen aku simpen baik-baik.
+
+terima kasih ya, Tua.
+
+karena tanpa sadar...
+
+kamu pernah jadi salah satu alasan kenapa aku bisa ngelewatin hari-hari yang berat dengan senyum.
+
+dan itu...
+
+bakal selalu aku inget. 🤍`;
+
+const text = document.getElementById("typing");
+const nextBtn = document.getElementById("nextBtn");
+
+let i = 0;
+
+function ketik(){
+
+if(i < surat.length){
+
+text.innerHTML += surat.charAt(i);
+
+i++;
+
+setTimeout(ketik,55);
+
+}else{
+
+nextBtn.style.opacity="1";
+nextBtn.style.pointerEvents="auto";
+nextBtn.classList.add("fadeButton");
+
+}
+
+}
+
+setTimeout(ketik,700);
+
+</script>
+
 </body>
+
 </html>
