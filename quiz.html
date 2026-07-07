@@ -29,7 +29,7 @@ animation:fade .8s;
 }
   
 button{
-display:none;
+display:inline-block;
 margin-top:30px;
 padding:15px 35px;
 border:none;
@@ -39,7 +39,7 @@ color:white;
 font-size:17px;
 font-weight:600;
 cursor:pointer;
-transition:.3s;
+transition:.35s ease;
 box-shadow:0 8px 18px rgba(109,41,50,.25);
 }
 
@@ -50,6 +50,11 @@ box-shadow:0 8px 18px rgba(109,41,50,.25);
 
 .option:hover{
 transform:scale(1.05);
+.option{
+display:block;
+width:100%;
+margin:12px 0;
+}
 }
 
  @keyframes fade{
