@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One More Gift</title>
+
+<style>
+
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffe6f0,#fff,#ffeef7);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+text-align:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+width:90%;
+max-width:500px;
+}
+
+h1{
+color:#ff5c9f;
+}
+
+.boxes{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:30px;
+}
+
+.gift{
+font-size:70px;
+cursor:pointer;
+transition:.3s;
+}
+
+.gift:hover{
+transform:scale(1.2);
+}
+
+#message{
+margin-top:25px;
+font-size:20px;
+color:#666;
+font-weight:bold;
+}
+
+button{
+display:none;
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:30px;
+background:#ff5c9f;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎁 One More Gift For Tuaa Botakk</h1>
+
+<p>Pilih yaa satu hadiah yang menurutmu paling beruntung 🤍</p>
+
+<div class="boxes">
+
+<div class="gift" onclick="wrong()">🎁</div>
+
+<div class="gift" onclick="right()">🎁</div>
+
+<div class="gift" onclick="wrong()">🎁</div>
+
+</div>
+
+<div id="message"></div>
+
+<button id="next" onclick="location.href='heart.html'">
+
+Continue 🤍
+
+</button>
+
+</div>
+
+<script>
+
+function wrong(){
+
+document.getElementById("message").innerHTML="🤭 Upcyy salah, coba lagi yaa tua.";
+
+}
+
+function right(){
+
+document.getElementById("message").innerHTML="🎉 Horee! Kamu dapet hadiah dari bocilmu 🤍";
+
+document.getElementById("next").style.display="inline-block";
+
+}
+
+</script>
+
+</body>
+</html>
