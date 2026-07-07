@@ -1,65 +1,400 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fill My Heart</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Catch My Heart</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
 <style>
 
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#F6F1EE,#ECE2DD,#E5D7D0);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+*{
+
 margin:0;
-text-align:center;
- line-height:1.7;
-letter-spacing:.3px; 
+padding:0;
+box-sizing:border-box;
+
 }
 
-.container{
+body{
+
+overflow:hidden;
+
+font-family:'Poppins',sans-serif;
+
+background:linear-gradient(135deg,#F7F2EF,#F1E5E2,#E7D5D1);
+
+height:100vh;
+
+user-select:none;
+
+}
+
+/* Background */
+
+#game{
+
+position:relative;
+
+width:100%;
+
+height:100vh;
+
+overflow:hidden;
+
+}
+
+/* Sparkle */
+
+.sparkle{
+
+position:absolute;
+
+width:5px;
+
+height:5px;
+
 background:white;
-padding:40px;
-border-radius:24px;
-box-shadow:0 12px 30px rgba(109,41,50,.15);
-width:90%;
-max-width:500px;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation:blink 2s infinite;
+
 }
 
-#heart{
-font-size:90px;
-cursor:pointer;
-transition:.3s;
+@keyframes blink{
+
+0%,100%{
+
+opacity:.2;
+transform:scale(.8);
+
 }
 
-#heart:hover{
-transform:scale(1.1);
+50%{
+
+opacity:1;
+transform:scale(1.4);
+
 }
 
-h2{
-color:#6D2932
 }
 
-button{
-display:none;
-margin-top:30px;
-padding:15px 35px;
-border:none;
-border-radius:40px;
-background:#6D2932;
-color:white;
-font-size:17px;
+/* Judul */
+
+.title{
+
+position:absolute;
+
+top:25px;
+
+width:100%;
+
+text-align:center;
+
+z-index:999;
+
+}
+
+.title h1{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:46px;
+
+color:#6D2932;
+
+margin-bottom:10px;
+
+}
+
+.title p{
+
+color:#7B6460;
+
+font-size:16px;
+
+}
+
+/* Love Meter */
+
+#meter{
+
+position:absolute;
+
+top:120px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:340px;
+
+z-index:999;
+
+}
+
+#score{
+
+text-align:center;
+
 font-weight:600;
+
+color:#6D2932;
+
+margin-bottom:12px;
+
+font-size:18px;
+
+}
+
+#bar{
+
+height:18px;
+
+background:#E9DAD7;
+
+border-radius:50px;
+
+overflow:hidden;
+
+box-shadow:inset 0 0 6px rgba(0,0,0,.08);
+
+}
+
+#fill{
+
+height:100%;
+
+width:0%;
+
+background:linear-gradient(90deg,#6D2932,#9B4D5A);
+
+transition:.25s;
+
+}
+
+/* Gift Box */
+
+#basket{
+
+position:absolute;
+
+bottom:30px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+font-size:60px;
+
+z-index:999;
+
+transition:.05s linear;
+
+}
+
+/* Item */
+
+.item{
+
+position:absolute;
+
+font-size:38px;
+
+pointer-events:none;
+
+}
+
+/* Popup */
+
+.popup{
+
+position:absolute;
+
+font-weight:bold;
+
+font-size:24px;
+
+pointer-events:none;
+
+animation:floatUp .8s forwards;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+transform:translateY(-60px);
+
+}
+
+}
+
+/* Popup Menang */
+
+#finish{
+
+display:none;
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:90%;
+max-width:430px;
+
+background:rgba(255,255,255,.96);
+
+backdrop-filter:blur(10px);
+
+padding:40px;
+
+border-radius:28px;
+
+text-align:center;
+
+box-shadow:0 18px 45px rgba(109,41,50,.18);
+
+z-index:9999;
+
+animation:popup .8s;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+
+transform:translate(-50%,-40%) scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translate(-50%,-50%) scale(1);
+
+}
+
+}
+
+#finish h2{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:42px;
+
+color:#6D2932;
+
+margin-bottom:18px;
+
+}
+
+#finish p{
+
+font-size:17px;
+
+line-height:1.9;
+
+color:#555;
+
+margin-bottom:25px;
+
+}
+
+#finish button{
+
+padding:15px 38px;
+
+border:none;
+
+border-radius:40px;
+
+background:#6D2932;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
 cursor:pointer;
+
 transition:.3s;
-box-shadow:0 8px 18px rgba(109,41,50,.25);
+
+box-shadow:0 10px 25px rgba(109,41,50,.25);
+
+}
+
+#finish button:hover{
+
+background:#87414C;
+
+transform:translateY(-3px);
+
+}
+
+/* Floating Heart */
+
+@keyframes floating{
+
+0%{
+
+transform:translateY(0) rotate(0deg);
+
+}
+
+50%{
+
+transform:translateY(-10px) rotate(8deg);
+
+}
+
+100%{
+
+transform:translateY(0) rotate(0deg);
+
+}
+
+}
+
+.item{
+
+animation:floating 1.8s infinite ease-in-out;
+
 }
 
 </style>
@@ -68,53 +403,385 @@ box-shadow:0 8px 18px rgba(109,41,50,.25);
 
 <body>
 
-<div class="container">
+<div id="game">
 
-<h2>❤️ Fill My Heart ❤️</h2>
+<div class="title">
 
-<p>Klik hati ini sampai penuh yaa maksaa bangett 🤍</p>
+<h1>🤍 Catch My Heart 🤍</h1>
 
-<div id="heart" onclick="love()">🤍</div>
+<p>
 
-<p id="text">0 / 5</p>
+Tangkap semua hati Cecel ya, Tuaa 😼
 
-<button id="next" onclick="location.href='cake.html'">
+</p>
 
-Birthday Cake 🎂
+</div>
+
+<div id="meter">
+
+<div id="score">
+
+🤍 Love Meter
+
+<br>
+
+<span id="angka">
+
+0 / 20
+
+</span>
+
+</div>
+
+<div id="bar">
+
+<div id="fill"></div>
+
+</div>
+
+</div>
+
+<div id="basket">
+
+🎁
+
+</div>
+
+<div id="finish">
+
+<h2>
+
+Yayyy!! 🤍
+
+</h2>
+
+<p>
+
+Semua hati Cecel berhasil kamu kumpulkan.
+
+Kayaknya sekarang kamu udah siap lanjut ke halaman berikutnya. 🌸
+
+</p>
+
+<button
+onclick="window.location.href='memory.html'">
+
+Lanjut ➜
 
 </button>
 
 </div>
 
+</div>
+
 <script>
 
-let count=0;
+const game=document.getElementById("game");
 
-const hearts=["🤍","💗","❤️","💖","💕"];
+const basket=document.getElementById("basket");
 
-function love(){
+const fill=document.getElementById("fill");
 
-if(count<5){
+const angka=document.getElementById("angka");
 
-document.getElementById("heart").innerHTML=hearts[count];
+const finish=document.getElementById("finish");
 
-count++;
+let score=0;
 
-document.getElementById("text").innerHTML=count+" / 5";
+const target=20;
+
+let basketX=window.innerWidth/2;
+
+/* ======================= */
+/* Sparkle */
+/* ======================= */
+
+for(let i=0;i<35;i++){
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.style.left=Math.random()*window.innerWidth+"px";
+
+s.style.top=Math.random()*window.innerHeight+"px";
+
+s.style.animationDelay=Math.random()*2+"s";
+
+game.appendChild(s);
 
 }
 
-if(count==5){
+/* ======================= */
+/* Gerak Gift */
+/* ======================= */
 
-document.getElementById("text").innerHTML="🦋 Makasih yaa udah sampai di sini.";
+document.addEventListener("mousemove",e=>{
 
-document.getElementById("next").style.display="inline-block";
+basketX=e.clientX;
+
+basket.style.left=basketX+"px";
+
+});
+
+document.addEventListener("touchmove",e=>{
+
+basketX=e.touches[0].clientX;
+
+basket.style.left=basketX+"px";
+
+});
+
+/* ======================= */
+/* Popup Score */
+/* ======================= */
+
+function popup(text,x,y,color){
+
+let p=document.createElement("div");
+
+p.className="popup";
+
+p.innerHTML=text;
+
+p.style.left=x+"px";
+
+p.style.top=y+"px";
+
+p.style.color=color;
+
+game.appendChild(p);
+
+setTimeout(()=>{
+
+p.remove();
+
+},800);
 
 }
+
+/* ======================= */
+/* Jatuhkan Item */
+/* ======================= */
+
+function createItem(){
+
+let item=document.createElement("div");
+
+item.className="item";
+
+let random=Math.random();
+
+let type="heart";
+
+if(random<0.15){
+
+type="bomb";
+
+}
+
+else if(random>0.90){
+
+type="gold";
+
+}
+
+if(type=="heart"){
+
+item.innerHTML="❤️";
+
+}
+
+if(type=="gold"){
+
+item.innerHTML="💖";
+
+}
+
+if(type=="bomb"){
+
+item.innerHTML="💣";
+
+}
+
+let ukuran=[28,36,44];
+
+item.style.fontSize=
+
+ukuran[Math.floor(Math.random()*3)]+"px";
+
+let x=Math.random()*(window.innerWidth-50);
+
+let y=-60;
+
+item.style.left=x+"px";
+
+item.style.top=y+"px";
+
+game.appendChild(item);
+
+let turun=setInterval(()=>{
+
+y+=5;
+
+item.style.top=y+"px";
+
+let b=basket.getBoundingClientRect();
+
+let i=item.getBoundingClientRect();
+
+if(
+
+i.bottom>=b.top &&
+
+i.left<b.right &&
+
+i.right>b.left
+
+){
+
+clearInterval(turun);
+
+item.remove();
+
+if(type=="heart"){
+
+score++;
+
+popup("+1 ❤️",basketX,window.innerHeight-120,"#6D2932");
+
+}
+
+if(type=="gold"){
+
+score+=5;
+
+popup("+5 💖",basketX,window.innerHeight-120,"#C2185B");
+
+}
+
+if(type=="bomb"){
+
+score=Math.max(0,score-2);
+
+popup("-2 💣",basketX,window.innerHeight-120,"#B22222");
+
+}
+
+fill.style.width=(score/target*100)+"%";
+
+angka.innerHTML=score+" / "+target;
+
+if(score>=target){
+
+menang();
+
+}
+
+}
+
+if(y>window.innerHeight){
+
+clearInterval(turun);
+
+item.remove();
+
+}
+
+},20);
+
+}
+
+setInterval(createItem,650);
+
+function menang(){
+
+clearInterval();
+
+confetti();
+
+finish.style.display="block";
+
+}
+
+/* ======================= */
+/* Confetti */
+/* ======================= */
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+let c=document.createElement("div");
+
+c.innerHTML=["🤍","🤎","❤️","🌸","✨"][Math.floor(Math.random()*5)];
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*window.innerWidth+"px";
+
+c.style.top="-40px";
+
+c.style.fontSize=(16+Math.random()*18)+"px";
+
+c.style.pointerEvents="none";
+
+document.body.appendChild(c);
+
+let y=-40;
+
+let x=parseFloat(c.style.left);
+
+let speed=4+Math.random()*4;
+
+let drift=(Math.random()*2)-1;
+
+let jatuh=setInterval(()=>{
+
+y+=speed;
+
+x+=drift;
+
+c.style.top=y+"px";
+
+c.style.left=x+"px";
+
+c.style.transform="rotate("+y+"deg)";
+
+if(y>window.innerHeight){
+
+clearInterval(jatuh);
+
+c.remove();
+
+}
+
+},20);
+
+}
+
+}
+
+/* ======================= */
+/* Musik kecil waktu menang */
+/* ======================= */
+
+function bunyi(){
+
+try{
+
+const audio=new Audio("success.mp3");
+
+audio.volume=.4;
+
+audio.play();
+
+}catch(e){}
 
 }
 
 </script>
 
 </body>
+
 </html>
