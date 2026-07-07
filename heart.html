@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill My Heart</title>
+
+<style>
+
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffe6f2,#fff,#ffeef7);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+text-align:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+width:90%;
+max-width:500px;
+}
+
+#heart{
+font-size:90px;
+cursor:pointer;
+transition:.3s;
+}
+
+#heart:hover{
+transform:scale(1.1);
+}
+
+h2{
+color:#ff5c9f;
+}
+
+button{
+display:none;
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:30px;
+background:#ff5c9f;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>❤️ Fill My Heart ❤️</h2>
+
+<p>Klik hati ini sampai penuh yaa maksaa bangett 🤍</p>
+
+<div id="heart" onclick="love()">🤍</div>
+
+<p id="text">0 / 5</p>
+
+<button id="next" onclick="location.href='cake.html'">
+
+Birthday Cake 🎂
+
+</button>
+
+</div>
+
+<script>
+
+let count=0;
+
+const hearts=["🤍","💗","❤️","💖","💕"];
+
+function love(){
+
+if(count<5){
+
+document.getElementById("heart").innerHTML=hearts[count];
+
+count++;
+
+document.getElementById("text").innerHTML=count+" / 5";
+
+}
+
+if(count==5){
+
+document.getElementById("text").innerHTML="🤍 Makasih yaa udah sampai di sini.";
+
+document.getElementById("next").style.display="inline-block";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
