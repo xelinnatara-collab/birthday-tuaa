@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Rotate Your Phone</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+body{
+
+background:linear-gradient(135deg,#F8F3F0,#EFE5E0,#E8DAD4);
+
+height:100vh;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-family:'Poppins',sans-serif;
+
+position:relative;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:750px;
+
+height:750px;
+
+background:radial-gradient(circle,
+rgba(109,41,50,.08),
+transparent 70%);
+
+filter:blur(30px);
+
+border-radius:50%;
+
+animation:glow 8s ease-in-out infinite alternate;
+
+}
+
+/* Card */
+
+.card{
+
+position:relative;
+
+z-index:5;
+
+width:90%;
+
+max-width:700px;
+
+padding:60px;
+
+background:rgba(255,255,255,.65);
+
+backdrop-filter:blur(14px);
+
+border-radius:32px;
+
+box-shadow:0 20px 55px rgba(109,41,50,.12);
+
+text-align:center;
+
+}
+
+/* Title */
+
+h1{
+
+font-family:'Great Vibes',cursive;
+
+font-size:62px;
+
+color:#5A1F2C;
+
+margin-bottom:18px;
+
+opacity:0;
+
+transform:translateY(-20px);
+
+animation:fadeDown 1.2s forwards;
+
+}
+
+/* Subtitle */
+
+.subtitle{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:29px;
+
+line-height:1.6;
+
+color:#6D2932;
+
+margin-bottom:40px;
+
+opacity:0;
+
+transform:translateY(-15px);
+
+animation:fadeDown 1.7s forwards;
+
+}
+
+/* Phone */
+
+.phone{
+
+font-size:92px;
+
+display:inline-block;
+
+margin-bottom:20px;
+
+animation:rotatePhone 2.8s ease-in-out infinite;
+
+}
+
+/* Status */
+
+.status{
+
+font-size:18px;
+
+color:#7B6663;
+
+min-height:28px;
+
+margin-top:15px;
+
+}
+
+/* Button */
+
+button{
+
+margin-top:45px;
+
+padding:15px 42px;
+
+border:none;
+
+border-radius:40px;
+
+background:#5A1F2C;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+opacity:.45;
+
+filter:blur(2px);
+
+cursor:not-allowed;
+
+pointer-events:none;
+
+transform:scale(.95);
+
+transition:.55s ease;
+
+box-shadow:0 10px 25px rgba(90,31,44,.25);
+
+}
+
+button.show{
+
+opacity:1;
+
+filter:none;
+
+cursor:pointer;
+
+pointer-events:auto;
+
+transform:scale(1);
+
+animation:pop .6s ease;
+
+}
+
+button:hover{
+
+background:#733341;
+
+transform:translateY(-3px);
+
+}
+
+@keyframes rotatePhone{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+35%{
+
+transform:rotate(90deg);
+
+}
+
+65%{
+
+transform:rotate(90deg);
+
+}
+
+100%{
+
+transform:rotate(0deg);
+
+}
+
+}
+
+@keyframes glow{
+
+from{
+
+transform:scale(.95);
+
+}
+
+to{
+
+transform:scale(1.08);
+
+}
+
+}
+
+@keyframes fadeDown{
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes pop{
+
+0%{
+
+transform:scale(.85);
+
+}
+
+60%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>One little thing...</h1>
+
+<p class="subtitle">
+
+This little story was made with love,<br>
+
+and it looks much prettier in landscape. 🤍
+
+</p>
+
+<div class="phone">
+
+📱
+
+</div>
+
+<div class="status" id="status">
+
+Checking your screen...
+
+</div>
+
+<button id="startBtn">
+
+I'm Ready →
+
+</button>
+
+</div>
+
+<script>
+
+const status=document.getElementById("status");
+
+const startBtn=document.getElementById("startBtn");
+
+function checkOrientation(){
+
+if(window.innerWidth>window.innerHeight){
+
+status.innerHTML="🤍 Perfect! You're ready to begin.";
+
+startBtn.classList.add("show");
+
+}else{
+
+status.innerHTML="📱 Rotate your phone to continue this little story.";
+
+startBtn.classList.remove("show");
+
+}
+
+}
+
+window.onload=checkOrientation;
+
+window.addEventListener("resize",checkOrientation);
+
+window.addEventListener("orientationchange",checkOrientation);
+
+startBtn.onclick=function(){
+
+document.body.style.transition="1s";
+
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+
+window.location.href="transition.html";
+
+},1000);
+
+};
+
+/* ========================= */
+/* Floating Sparkles */
+/* ========================= */
+
+function createSparkle(){
+
+const sparkle=document.createElement("div");
+
+sparkle.innerHTML=["✨","🤍","✦"][Math.floor(Math.random()*3)];
+
+sparkle.style.position="fixed";
+
+sparkle.style.left=Math.random()*100+"vw";
+
+sparkle.style.top=Math.random()*100+"vh";
+
+sparkle.style.fontSize=(12+Math.random()*12)+"px";
+
+sparkle.style.opacity=".75";
+
+sparkle.style.pointerEvents="none";
+
+sparkle.style.zIndex="1";
+
+document.body.appendChild(sparkle);
+
+sparkle.animate(
+
+[
+
+{opacity:0,transform:"scale(.4)"},
+
+{opacity:1,transform:"scale(1.2)"},
+
+{opacity:0,transform:"scale(.4)"}
+
+],
+
+{
+
+duration:2400,
+
+iterations:1
+
+}
+
+);
+
+setTimeout(()=>{
+
+sparkle.remove();
+
+},2400);
+
+}
+
+setInterval(createSparkle,450);
+
+/* ========================= */
+/* Falling Flowers */
+/* ========================= */
+
+function createFlower(){
+
+const flower=document.createElement("div");
+
+flower.innerHTML=["🌸","🤍"][Math.floor(Math.random()*2)];
+
+flower.style.position="fixed";
+
+flower.style.left=Math.random()*100+"vw";
+
+flower.style.top="-40px";
+
+flower.style.fontSize=(18+Math.random()*10)+"px";
+
+flower.style.pointerEvents="none";
+
+flower.style.zIndex="0";
+
+document.body.appendChild(flower);
+
+let y=-40;
+
+let x=parseFloat(flower.style.left);
+
+let rotate=Math.random()*360;
+
+let drift=(Math.random()*2)-1;
+
+const fall=setInterval(()=>{
+
+y+=2+Math.random()*1.2;
+
+x+=drift;
+
+rotate+=1.5;
+
+flower.style.top=y+"px";
+
+flower.style.left=x+"px";
+
+flower.style.transform=`rotate(${rotate}deg)`;
+
+if(y>window.innerHeight+60){
+
+clearInterval(fall);
+
+flower.remove();
+
+}
+
+},20);
+
+}
+
+setInterval(createFlower,900);
+
+/* ========================= */
+/* Smooth Fade */
+/* ========================= */
+
+document.body.style.opacity="0";
+
+window.addEventListener("load",()=>{
+
+document.body.style.transition="opacity 1.2s ease";
+
+document.body.style.opacity="1";
+
+});
+
+</script>
+
+</body>
+
+</html>
