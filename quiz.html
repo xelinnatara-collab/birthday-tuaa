@@ -71,6 +71,49 @@ transform:translateY(0);
 .option:hover{
 background:#555;
 }
+
+.finishBox{
+
+display:none;
+
+margin-top:25px;
+
+animation:fade .8s;
+
+}
+
+.finishBox button{
+
+margin-top:18px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:40px;
+
+background:#6D2932;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.finishBox button:hover{
+
+transform:scale(1.05);
+
+background:#87414C;
+
+}
+
 </style>
 
 </head>
@@ -88,6 +131,24 @@ Selesaikan tantangan kecil ini untuk membuka surat rahasia. 😽
 <h3 id="question"></h3>
 
 <div id="answers"></div>
+
+<div id="finishBox" class="finishBox">
+
+<h2>🎉 Yeayy!!</h2>
+
+<p>
+
+Ternyata Tua kenal Cecel yaa. 🤍<br>
+
+Sekarang aku mau nunjukin sesuatu buat kamu...
+
+</p>
+
+<button onclick="selesai()">
+
+Continue ☁️
+
+</button>
 
 </div>
 
@@ -127,11 +188,6 @@ a:[
 ]
 },
 
-{
-q:"4. Sesuatu buat Cecel 💌",
-text:true
-}
-
 ];
 
 showQuestion();
@@ -145,17 +201,6 @@ document.getElementById("question").innerHTML=q.q;
 let ans=document.getElementById("answers");
 
 ans.innerHTML="";
-
-if(q.text){
-
-ans.innerHTML=`
-<input id="pesan" style="width:90%;padding:12px;border-radius:10px;"><br><br>
-<button onclick="selesai()">Lanjut ☁️</button>
-`;
-
-return;
-
-}
 
 q.a.forEach(item=>{
 
@@ -178,6 +223,16 @@ alert(item[1]+" 💕");
 },200);
 
 nomor++;
+
+if(nomor>=quiz.length){
+
+document.getElementById("question").style.display="none";
+
+document.getElementById("answers").style.display="none";
+
+document.getElementById("finishBox").style.display="block";
+
+}else{
 
 showQuestion();
 
