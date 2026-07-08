@@ -772,36 +772,60 @@ finish.classList.add("show");
 
 function confetti(){
 
-for(let i=0;i<120;i++){
+let total = 40;
+let count = 0;
 
-const c=document.createElement("div");
+const rain = setInterval(()=>{
 
-c.innerHTML=["🤍","❤️","🌸","✨","🌹"][Math.floor(Math.random()*5)];
+const c = document.createElement("div");
 
-c.style.position="fixed";
-c.style.left=Math.random()*100+"vw";
-c.style.top="-40px";
-c.style.fontSize=(18+Math.random()*18)+"px";
-c.style.pointerEvents="none";
+const items = ["🤍","❤️","🌸","✨","🌹"];
+
+c.innerHTML = items[Math.floor(Math.random()*items.length)];
+
+c.style.position = "fixed";
+c.style.left = Math.random()*100 + "vw";
+c.style.top = "-40px";
+c.style.fontSize = (18 + Math.random()*18) + "px";
+c.style.pointerEvents = "none";
+c.style.zIndex = "999";
 
 document.body.appendChild(c);
 
-let y=-40;
-let x=parseFloat(c.style.left);
+let y = -40;
+let x = Math.random()*window.innerWidth;
+let speed = 2 + Math.random()*3;
+let drift = (Math.random()-0.5)*2;
+let rotate = Math.random()*360;
 
-const fall=setInterval(()=>{
+const fall = setInterval(()=>{
 
-y+=4;
-x+=Math.random()*2-1;
+y += speed;
+x += drift;
+rotate += 2;
 
-c.style.top=y+"px";
-c.style.left=x+"px";
-c.style.transform=`rotate(${y}deg)`;
+c.style.top = y + "px";
+c.style.left = x + "px";
+c.style.transform = `rotate(${rotate}deg)`;
 
-if(y>window.innerHeight){
+if(y > window.innerHeight + 50){
 
 clearInterval(fall);
 c.remove();
+
+}
+
+},20);
+
+count++;
+
+if(count >= total){
+
+clearInterval(rain);
+
+}
+
+},180);
 
 }
 
