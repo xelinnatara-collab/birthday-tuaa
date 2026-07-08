@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The End</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 }
 
 body{
 
-background:linear-gradient(135deg,#F7F1EE,#EFE5E0,#E8DAD4);
-
+height:100vh;
 overflow:hidden;
 
-height:100vh;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
+
+background:
+radial-gradient(circle at center,#f8f3f1 0%,#efe5df 55%,#e3d2cb 100%);
 
 font-family:'Poppins',sans-serif;
 
+position:relative;
+
 }
 
-/* Background Glow */
+/* Glow */
 
 body::before{
 
@@ -54,7 +47,6 @@ content:"";
 position:absolute;
 
 width:700px;
-
 height:700px;
 
 background:radial-gradient(circle,
@@ -63,37 +55,43 @@ transparent 70%);
 
 border-radius:50%;
 
-filter:blur(20px);
-
 animation:glow 8s ease-in-out infinite alternate;
 
 }
 
-/* Main Box */
+@keyframes glow{
+
+from{
+transform:scale(.9);
+}
+
+to{
+transform:scale(1.15);
+}
+
+}
 
 .container{
 
 position:relative;
-
 z-index:5;
 
-width:90%;
-
+width:88%;
 max-width:900px;
 
 text-align:center;
 
 }
 
-/* Main Quote */
+/* Quote */
 
 .quote{
 
 font-family:'Great Vibes',cursive;
 
-font-size:62px;
+font-size:68px;
 
-color:#4B1622;
+color:#5B1F2A;
 
 line-height:1.45;
 
@@ -103,35 +101,37 @@ transform:translateY(35px);
 
 }
 
-/* Text */
+/* Paragraph */
 
 .text{
 
 font-family:'Cormorant Garamond',serif;
 
-font-size:30px;
+font-size:31px;
 
-color:#5A1F2C;
+color:#6D2932;
 
-margin-top:30px;
+margin-top:34px;
+
+line-height:1.8;
 
 opacity:0;
 
-transform:translateY(25px);
+transform:translateY(30px);
 
 }
 
 /* Signature */
 
-.sign{
+.signature{
+
+margin-top:75px;
 
 font-family:'Great Vibes',cursive;
 
-font-size:42px;
+font-size:46px;
 
-color:#5A1F2C;
-
-margin-top:70px;
+color:#5B1F2A;
 
 opacity:0;
 
@@ -141,9 +141,9 @@ opacity:0;
 
 .heart{
 
-font-size:24px;
+margin-top:20px;
 
-margin-top:18px;
+font-size:28px;
 
 color:#6D2932;
 
@@ -151,7 +151,32 @@ opacity:0;
 
 }
 
-/* Rose Petal */
+/* Final Text */
+
+.final{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-family:'Great Vibes',cursive;
+
+font-size:82px;
+
+color:#5B1F2A;
+
+letter-spacing:3px;
+
+opacity:0;
+
+z-index:10;
+
+}
+
+/* Petals */
 
 .petal{
 
@@ -159,57 +184,9 @@ position:absolute;
 
 top:-60px;
 
-font-size:26px;
-
 pointer-events:none;
 
 user-select:none;
-
-opacity:.95;
-
-}
-
-/* End */
-
-.end{
-
-position:absolute;
-
-left:50%;
-
-top:50%;
-
-transform:translate(-50%,-50%);
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:54px;
-
-letter-spacing:7px;
-
-color:white;
-
-opacity:0;
-
-z-index:20;
-
-}
-
-/* Animation */
-
-@keyframes glow{
-
-from{
-
-transform:scale(.9);
-
-}
-
-to{
-
-transform:scale(1.2);
-
-}
 
 }
 
@@ -235,8 +212,6 @@ opacity:1;
 
 }
 
-}
-
 </style>
 
 </head>
@@ -248,7 +223,6 @@ opacity:1;
 <div class="quote" id="quote">
 
 If I could choose one chapter to read forever,<br>
-
 I would always choose the chapter where I met you.
 
 </div>
@@ -261,15 +235,16 @@ Happy Birthday, Tua. 🤍
 
 <div class="text" id="text2">
 
-Thank you for existing in one of the most beautiful chapters of my life.
+Thank you for becoming one of the most beautiful memories
+I'll always carry with me.
 
 </div>
 
 <div class="text" id="text3">
 
-No matter how our story continues,<br>
+No matter where life takes us,<br>
 
-I will always be grateful that our paths crossed.
+I'll always be grateful that our paths crossed.
 
 </div>
 
@@ -279,7 +254,7 @@ I will always be grateful that our paths crossed.
 
 </div>
 
-<div class="sign" id="sign">
+<div class="signature" id="sign">
 
 With love,<br>
 
@@ -289,7 +264,7 @@ Cecel.
 
 </div>
 
-<div class="end" id="endText">
+<div class="final" id="finalText">
 
 The End
 
@@ -309,47 +284,51 @@ const heart=document.getElementById("heart");
 
 const sign=document.getElementById("sign");
 
-const endText=document.getElementById("endText");
+const finalText=document.getElementById("finalText");
+
+/* ========================= */
+/* Text Animation */
+/* ========================= */
 
 setTimeout(()=>{
 
-quote.style.animation="fadeUp 1.6s forwards";
+quote.style.animation="fadeUp 1.8s forwards";
 
 },800);
 
 setTimeout(()=>{
 
-text1.style.animation="fadeUp 1.3s forwards";
+text1.style.animation="fadeUp 1.4s forwards";
 
 },3200);
 
 setTimeout(()=>{
 
-text2.style.animation="fadeUp 1.3s forwards";
+text2.style.animation="fadeUp 1.4s forwards";
 
-},5000);
+},5200);
 
 setTimeout(()=>{
 
-text3.style.animation="fadeUp 1.3s forwards";
+text3.style.animation="fadeUp 1.4s forwards";
 
-},7200);
+},7600);
 
 setTimeout(()=>{
 
 heart.style.animation="fade 1s forwards";
 
-},9000);
+},9800);
 
 setTimeout(()=>{
 
-sign.style.animation="fade 1.3s forwards";
+sign.style.animation="fade 1.5s forwards";
 
-},9800);
+},10800);
 
-/* ============================= */
-/* Rose Petals Animation */
-/* ============================= */
+/* ========================= */
+/* Rose Petals */
+/* ========================= */
 
 function createPetal(){
 
@@ -357,13 +336,11 @@ const petal=document.createElement("div");
 
 petal.className="petal";
 
-petal.innerHTML="🌹";
+petal.innerHTML=["🌹","🥀"][Math.floor(Math.random()*2)];
 
 petal.style.left=Math.random()*100+"vw";
 
-petal.style.fontSize=(18+Math.random()*18)+"px";
-
-petal.style.animationDuration=(8+Math.random()*5)+"s";
+petal.style.fontSize=(18+Math.random()*16)+"px";
 
 document.body.appendChild(petal);
 
@@ -373,9 +350,9 @@ let x=parseFloat(petal.style.left);
 
 let rotate=Math.random()*360;
 
-let speed=1+Math.random()*1.5;
-
 let drift=(Math.random()*2)-1;
+
+let speed=1.4+Math.random()*1.2;
 
 const fall=setInterval(()=>{
 
@@ -383,7 +360,7 @@ y+=speed;
 
 x+=drift;
 
-rotate+=1.5;
+rotate+=1.3;
 
 petal.style.top=y+"px";
 
@@ -403,87 +380,64 @@ petal.remove();
 
 }
 
-/* Mulai kelopak turun */
+setTimeout(()=>{
+
+setInterval(createPetal,650);
+
+},11800);
+
+/* ========================= */
+/* Fade Story */
+/* ========================= */
 
 setTimeout(()=>{
 
-setInterval(createPetal,450);
+document.querySelector(".container").style.transition="opacity 3.5s ease";
 
-},11500);
+document.querySelector(".container").style.opacity="0";
 
-/* Semakin lama semakin banyak */
+},17500);
 
-setTimeout(()=>{
-
-setInterval(createPetal,220);
-
-},15000);
-
-/* Tulisan mulai memudar */
+/* ========================= */
+/* Dark Background */
+/* ========================= */
 
 setTimeout(()=>{
 
-document.querySelector(".container").style.transition="3s";
+document.body.style.transition="background 4s ease";
 
-document.querySelector(".container").style.opacity=".15";
+document.body.style.background="#2A151B";
 
-},19500);
+},18500);
 
-/* Background perlahan menggelap */
-
-setTimeout(()=>{
-
-document.body.style.transition="4s";
-
-document.body.style.background="#1A0D11";
-
-},22000);.
+/* ========================= */
+/* Show The End */
+/* ========================= */
 
 setTimeout(()=>{
 
-endText.style.animation="fade 2.5s forwards";
+finalText.style.animation="fade 2.5s forwards";
 
-},25500);
+},22000);
 
-/* Kelopak terakhir semakin banyak */
-
-setTimeout(()=>{
-
-for(let i=0;i<180;i++){
-
-setTimeout(createPetal,i*70);
-
-}
-
-},25000);
-
-/* Sedikit zoom supaya cinematic */
+/* ========================= */
+/* Slow Zoom */
+/* ========================= */
 
 setTimeout(()=>{
 
-document.body.style.transition="transform 6s ease";
+document.body.style.transition+=" , transform 8s ease";
 
 document.body.style.transform="scale(1.02)";
 
-},26000);
+},22500);
 
-/* Setelah beberapa detik semua fade out */
+/* ========================= */
+/* Stay on Ending */
+/* ========================= */
 
-setTimeout(()=>{
-
-document.body.style.transition="opacity 4s ease";
-
-document.body.style.opacity="0";
-
-},32000);
-
-/* Opsional: kembali ke halaman awal */
-
-setTimeout(()=>{
-
-window.location.href="index.html";
-
-},36500);
+/* Tidak redirect ke index lagi.
+   Biarkan halaman berhenti di "The End". */
 
 </script>
 
