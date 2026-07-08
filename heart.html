@@ -552,3 +552,283 @@ Continue Our Story ➜
 </button>
 
 </div>
+
+<script>
+
+const game=document.getElementById("game");
+const basket=document.getElementById("basket");
+const fill=document.getElementById("fill");
+const angka=document.getElementById("angka");
+const finish=document.getElementById("finish");
+const nextBtn=document.getElementById("nextBtn");
+
+let score=0;
+const target=20;
+
+let basketX=window.innerWidth/2;
+let gameFinished=false;
+
+/* ===========================
+   Sparkle Background
+=========================== */
+
+for(let i=0;i<40;i++){
+
+const s=document.createElement("div");
+
+s.className="sparkle";
+
+s.style.left=Math.random()*window.innerWidth+"px";
+s.style.top=Math.random()*window.innerHeight+"px";
+s.style.animationDelay=Math.random()*3+"s";
+
+game.appendChild(s);
+
+}
+
+/* ===========================
+   Gift Movement
+=========================== */
+
+document.addEventListener("mousemove",(e)=>{
+
+basketX=e.clientX;
+basket.style.left=basketX+"px";
+
+});
+
+document.addEventListener("touchmove",(e)=>{
+
+basketX=e.touches[0].clientX;
+basket.style.left=basketX+"px";
+
+});
+
+/* ===========================
+   Score Popup
+=========================== */
+
+function popup(text,x,y,color){
+
+const p=document.createElement("div");
+
+p.className="popup";
+
+p.innerHTML=text;
+
+p.style.left=x+"px";
+p.style.top=y+"px";
+p.style.color=color;
+
+game.appendChild(p);
+
+setTimeout(()=>{
+
+p.remove();
+
+},900);
+
+}
+
+/* ===========================
+   Falling Items
+=========================== */
+
+const rain=setInterval(createItem,650);
+
+function createItem(){
+
+if(gameFinished) return;
+
+const item=document.createElement("div");
+
+item.className="item";
+
+let type="heart";
+
+const r=Math.random();
+
+if(r<0.15){
+
+type="bomb";
+
+}else if(r>0.88){
+
+type="gold";
+
+}
+
+if(type=="heart") item.innerHTML="❤️";
+if(type=="gold") item.innerHTML="💖";
+if(type=="bomb") item.innerHTML="💣";
+
+item.style.left=Math.random()*(window.innerWidth-50)+"px";
+item.style.top="-50px";
+
+game.appendChild(item);
+
+let y=-50;
+
+const fall=setInterval(()=>{
+
+if(gameFinished){
+
+clearInterval(fall);
+item.remove();
+return;
+
+}
+
+y+=5;
+
+item.style.top=y+"px";
+
+const b=basket.getBoundingClientRect();
+const i=item.getBoundingClientRect();
+
+if(
+i.bottom>=b.top &&
+i.left<b.right &&
+i.right>b.left
+){
+
+clearInterval(fall);
+
+item.remove();
+
+if(type=="heart"){
+
+score++;
+popup("+1 ❤️",basketX,window.innerHeight-120,"#6D2932");
+
+}
+
+if(type=="gold"){
+
+score+=3;
+popup("+3 💖",basketX,window.innerHeight-120,"#C2185B");
+
+}
+
+if(type=="bomb"){
+
+score=Math.max(0,score-2);
+popup("-2 💣",basketX,window.innerHeight-120,"#B22222");
+
+}
+
+fill.style.width=(score/target*100)+"%";
+
+angka.innerHTML=score+" / "+target;
+
+basket.classList.add("bounce");
+
+setTimeout(()=>{
+
+basket.classList.remove("bounce");
+
+},500);
+
+if(score>=target){
+
+winGame();
+
+}
+
+}
+
+if(y>window.innerHeight){
+
+clearInterval(fall);
+item.remove();
+
+}
+
+},20);
+
+}
+
+/* ===========================
+   Win
+=========================== */
+
+function winGame(){
+
+if(gameFinished) return;
+
+gameFinished=true;
+
+clearInterval(rain);
+
+confetti();
+
+finish.classList.add("show");
+
+}
+
+/* ===========================
+   Confetti
+=========================== */
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+const c=document.createElement("div");
+
+c.innerHTML=["🤍","❤️","🌸","✨","🌹"][Math.floor(Math.random()*5)];
+
+c.style.position="fixed";
+c.style.left=Math.random()*100+"vw";
+c.style.top="-40px";
+c.style.fontSize=(18+Math.random()*18)+"px";
+c.style.pointerEvents="none";
+
+document.body.appendChild(c);
+
+let y=-40;
+let x=parseFloat(c.style.left);
+
+const fall=setInterval(()=>{
+
+y+=4;
+x+=Math.random()*2-1;
+
+c.style.top=y+"px";
+c.style.left=x+"px";
+c.style.transform=`rotate(${y}deg)`;
+
+if(y>window.innerHeight){
+
+clearInterval(fall);
+c.remove();
+
+}
+
+},20);
+
+}
+
+}
+
+/* ===========================
+   Next Page
+=========================== */
+
+nextBtn.onclick=function(){
+
+document.body.style.transition="opacity 1.2s ease";
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+
+window.location.href="memory.html";
+
+},1200);
+
+};
+
+</script>
+
+</body>
+</html>
