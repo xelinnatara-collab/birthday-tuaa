@@ -1,109 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Tua</title>
+
+<title>The End</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 
-body{
+*{
+
 margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#F6F1EE,#ECE2DD,#E5D7D0);
-overflow:hidden;
-text-align:center;
-line-height:1.7;
-letter-spacing:.3px;
+
+padding:0;
+
+box-sizing:border-box;
+
 }
+
+body{
+
+background:linear-gradient(135deg,#F7F1EE,#EFE5E0,#E8DAD4);
+
+overflow:hidden;
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+
+height:700px;
+
+background:radial-gradient(circle,
+rgba(109,41,50,.08),
+transparent 70%);
+
+border-radius:50%;
+
+filter:blur(20px);
+
+animation:glow 8s ease-in-out infinite alternate;
+
+}
+
+/* Main Box */
 
 .container{
-z-index:2;
-padding:20px;
+
+position:relative;
+
+z-index:5;
+
+width:90%;
+
+max-width:900px;
+
+text-align:center;
+
 }
 
-h1{
-font-family:'Cormorant Garamond',serif; 
-font-size:45px;
-color:#6D2932
-margin-bottom:20px;
+/* Main Quote */
+
+.quote{
+
+font-family:'Great Vibes',cursive;
+
+font-size:62px;
+
+color:#4B1622;
+
+line-height:1.45;
+
+opacity:0;
+
+transform:translateY(35px);
+
 }
 
-p{
-font-size:20px;
-color:#555;
-line-height:1.8;
+/* Text */
+
+.text{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:30px;
+
+color:#5A1F2C;
+
+margin-top:30px;
+
+opacity:0;
+
+transform:translateY(25px);
+
 }
+
+/* Signature */
+
+.sign{
+
+font-family:'Great Vibes',cursive;
+
+font-size:42px;
+
+color:#5A1F2C;
+
+margin-top:70px;
+
+opacity:0;
+
+}
+
+/* Heart */
 
 .heart{
+
+font-size:24px;
+
+margin-top:18px;
+
+color:#6D2932;
+
+opacity:0;
+
+}
+
+/* Rose Petal */
+
+.petal{
+
 position:absolute;
-font-size:25px;
-animation:fall linear infinite;
-opacity:.8;
+
+top:-60px;
+
+font-size:26px;
+
+pointer-events:none;
+
+user-select:none;
+
+opacity:.95;
+
 }
 
-@keyframes fall{
+/* End */
 
-0%{
-transform:translateY(-100px);
+.end{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:54px;
+
+letter-spacing:7px;
+
+color:white;
+
+opacity:0;
+
+z-index:20;
+
 }
 
-100%{
-transform:translateY(110vh);
+/* Animation */
+
+@keyframes glow{
+
+from{
+
+transform:scale(.9);
+
+}
+
+to{
+
+transform:scale(1.2);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fade{
+
+to{
+
+opacity:1;
+
+}
+
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🎉 Happy Birthday, Tua 🎉</h1>
+<div class="quote" id="quote">
 
-<p>
-Thank you for existing in a chapter of my life.<br>
-No matter where life takes us,<br>
-I'll always wish the best for you. 🤍
-</p>
+If I could choose one chapter to read forever,<br>
 
-<h2>— Cecel 🤍</h2>
+I would always choose the chapter where I met you.
+
+</div>
+
+<div class="text" id="text1">
+
+Happy Birthday, Tua. 🤍
+
+</div>
+
+<div class="text" id="text2">
+
+Thank you for existing in one of the most beautiful chapters of my life.
+
+</div>
+
+<div class="text" id="text3">
+
+No matter how our story continues,<br>
+
+I will always be grateful that our paths crossed.
+
+</div>
+
+<div class="heart" id="heart">
+
+♡
+
+</div>
+
+<div class="sign" id="sign">
+
+With love,<br>
+
+Cecel.
+
+</div>
+
+</div>
+
+<div class="end" id="endText">
+
+The End
 
 </div>
 
 <script>
 
-for(let i=0;i<40;i++){
+const quote=document.getElementById("quote");
 
-let heart=document.createElement("div");
+const text1=document.getElementById("text1");
 
-heart.className="heart";
+const text2=document.getElementById("text2");
 
-heart.innerHTML=["🤍","💖","💕","💗"][Math.floor(Math.random()*4)];
+const text3=document.getElementById("text3");
 
-heart.style.left=Math.random()*100+"vw";
+const heart=document.getElementById("heart");
 
-heart.style.animationDuration=(3+Math.random()*4)+"s";
+const sign=document.getElementById("sign");
 
-heart.style.fontSize=(18+Math.random()*25)+"px";
+const endText=document.getElementById("endText");
 
-heart.style.animationDelay=Math.random()*5+"s";
+setTimeout(()=>{
 
-document.body.appendChild(heart);
+quote.style.animation="fadeUp 1.6s forwards";
+
+},800);
+
+setTimeout(()=>{
+
+text1.style.animation="fadeUp 1.3s forwards";
+
+},3200);
+
+setTimeout(()=>{
+
+text2.style.animation="fadeUp 1.3s forwards";
+
+},5000);
+
+setTimeout(()=>{
+
+text3.style.animation="fadeUp 1.3s forwards";
+
+},7200);
+
+setTimeout(()=>{
+
+heart.style.animation="fade 1s forwards";
+
+},9000);
+
+setTimeout(()=>{
+
+sign.style.animation="fade 1.3s forwards";
+
+},9800);
+
+/* ============================= */
+/* Rose Petals Animation */
+/* ============================= */
+
+function createPetal(){
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.innerHTML="🌹";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.fontSize=(18+Math.random()*18)+"px";
+
+petal.style.animationDuration=(8+Math.random()*5)+"s";
+
+document.body.appendChild(petal);
+
+let y=-60;
+
+let x=parseFloat(petal.style.left);
+
+let rotate=Math.random()*360;
+
+let speed=1+Math.random()*1.5;
+
+let drift=(Math.random()*2)-1;
+
+const fall=setInterval(()=>{
+
+y+=speed;
+
+x+=drift;
+
+rotate+=1.5;
+
+petal.style.top=y+"px";
+
+petal.style.left=x+"px";
+
+petal.style.transform=`rotate(${rotate}deg)`;
+
+if(y>window.innerHeight+80){
+
+clearInterval(fall);
+
+petal.remove();
 
 }
+
+},20);
+
+}
+
+/* Mulai kelopak turun */
+
+setTimeout(()=>{
+
+setInterval(createPetal,450);
+
+},11500);
+
+/* Semakin lama semakin banyak */
+
+setTimeout(()=>{
+
+setInterval(createPetal,220);
+
+},15000);
+
+/* Tulisan mulai memudar */
+
+setTimeout(()=>{
+
+document.querySelector(".container").style.transition="3s";
+
+document.querySelector(".container").style.opacity=".15";
+
+},19500);
+
+/* Background perlahan menggelap */
+
+setTimeout(()=>{
+
+document.body.style.transition="4s";
+
+document.body.style.background="#1A0D11";
+
+},22000);.
+
+setTimeout(()=>{
+
+endText.style.animation="fade 2.5s forwards";
+
+},25500);
+
+/* Kelopak terakhir semakin banyak */
+
+setTimeout(()=>{
+
+for(let i=0;i<180;i++){
+
+setTimeout(createPetal,i*70);
+
+}
+
+},25000);
+
+/* Sedikit zoom supaya cinematic */
+
+setTimeout(()=>{
+
+document.body.style.transition="transform 6s ease";
+
+document.body.style.transform="scale(1.02)";
+
+},26000);
+
+/* Setelah beberapa detik semua fade out */
+
+setTimeout(()=>{
+
+document.body.style.transition="opacity 4s ease";
+
+document.body.style.opacity="0";
+
+},32000);
+
+/* Opsional: kembali ke halaman awal */
+
+setTimeout(()=>{
+
+window.location.href="index.html";
+
+},36500);
 
 </script>
 
 </body>
+
 </html>
