@@ -1,116 +1,635 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Tua</title>
+
+<title>Our Little Memories</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 
-body{
+*{
 margin:0;
-padding:30px;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
 font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#F6F1EE,#ECE2DD,#E5D7D0);
+
+background:linear-gradient(135deg,#F8F3F0,#EFE3DE,#E8D9D3);
+
+overflow-x:hidden;
+
+color:#5B2333;
+
+}
+
+/* Sparkle */
+
+.sparkle{
+
+position:fixed;
+
+font-size:18px;
+
+animation:blink 2.5s infinite alternate;
+
+pointer-events:none;
+
+opacity:.7;
+
+z-index:0;
+
+}
+
+.sparkle:nth-child(1){
+
+top:8%;
+left:8%;
+
+}
+
+.sparkle:nth-child(2){
+
+top:15%;
+right:8%;
+
+animation-delay:.7s;
+
+}
+
+.sparkle:nth-child(3){
+
+bottom:12%;
+left:12%;
+
+animation-delay:1.2s;
+
+}
+
+.sparkle:nth-child(4){
+
+bottom:8%;
+right:10%;
+
+animation-delay:1.8s;
+
+}
+
+@keyframes blink{
+
+from{
+
+opacity:.2;
+
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1.3);
+
+}
+
+}
+
+/* Container */
+
+.container{
+
+max-width:1100px;
+
+margin:auto;
+
+padding:70px 25px;
+
+position:relative;
+
+z-index:2;
+
 text-align:center;
-line-height:1.7;
-letter-spacing:.3px;
+
+}
+
+/* Judul */
+
+h1{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:58px;
+
+color:#6D2932;
+
+margin-bottom:12px;
+
+opacity:0;
+
+animation:fadeDown .9s forwards;
+
+}
+
+.subtitle{
+
+font-size:18px;
+
+color:#7B6360;
+
+margin-bottom:50px;
+
+opacity:0;
+
+animation:fadeDown 1.2s forwards;
+
+}
+
+/* Gallery */
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:24px;
+
+}
+
+/* Card */
+
+.photo{
+
+background:white;
+
+padding:8px;
+
+border-radius:18px;
+
+box-shadow:0 15px 35px rgba(109,41,50,.15);
+
+overflow:hidden;
+
+opacity:0;
+
+transform:translateY(35px) scale(.9);
+
+transition:.5s;
+
+}
+
+.photo.show{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+.photo img{
+
+width:100%;
+
+height:310px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.photo:hover img{
+
+transform:scale(1.05);
+
+}
+
+/* Pesan */
+
+.message{
+
+margin-top:55px;
+
+font-size:22px;
+
+font-weight:500;
+
+color:#6D2932;
+
+opacity:0;
+
+transform:translateY(20px);
+
+transition:.7s;
+
+}
+
+.message.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* Button */
+
+button{
+
+display:none;
+
+margin-top:35px;
+
+padding:16px 42px;
+
+border:none;
+
+border-radius:40px;
+
+background:#6D2932;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 10px 28px rgba(109,41,50,.25);
+
+}
+
+button.show{
+
+display:inline-block;
+
+animation:fadeUp .8s;
+
+}
+
+button:hover{
+
+background:#87414A;
+
+transform:translateY(-3px);
+
+}
+
+/* Lightbox */
+
+.lightbox{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.75);
+
+justify-content:center;
+
+align-items:center;
+
+z-index:999;
+
+}
+
+.lightbox img{
+
+max-width:92%;
+
+max-height:90%;
+
+border-radius:18px;
+
+box-shadow:0 18px 40px rgba(0,0,0,.45);
+
+animation:zoom .4s;
+
+}
+
+/* Animasi */
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+
+transform:translateY(-25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes zoom{
+
+from{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes breath{
+
+0%{
+
+transform:translateY(0) scale(1);
+
+}
+
+50%{
+
+transform:translateY(-4px) scale(1.02);
+
+}
+
+100%{
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.gallery{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.photo img{
+
+height:220px;
+
 }
 
 h1{
-font-family:'Cormorant Garamond',serif;  
-color:#6D2932
+
+font-size:42px;
+
 }
 
-p{
-color:#666;
+.subtitle{
+
+font-size:16px;
+
 }
 
-.gallery{
-margin:35px auto;
-max-width:750px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-background:white;
-padding:20px;
-border-radius:24px;
-box-shadow:0 12px 30px rgba(109,41,50,.15);
 }
 
-.gallery img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:18px;
-transition:.3s;
-}
+  </style>
 
-.gallery img:hover{
-transform:scale(1.03);
-}
-
-.caption{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:#ff5c9f;
-}
-
-button{
-display:none;
-margin-top:30px;
-padding:15px 35px;
-border:none;
-border-radius:40px;
-background:#6D2932;
-color:white;
-font-size:17px;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 8px 18px rgba(109,41,50,.25);
-}
-
-</style>
 </head>
 
 <body>
 
-<h1>💋 About Tua 👣</h1>
+<div class="sparkle">✨</div>
+<div class="sparkle">🤍</div>
+<div class="sparkle">🌸</div>
+<div class="sparkle">✨</div>
 
-<p>
-Maaf ya fotonya sedikit...<br>
-Lagian kamu nggak pernah pap princess. 😒
+<div class="container">
+
+<h1>Our Little Memories ♡</h1>
+
+<p class="subtitle">
+
+Some moments may pass,
+but the memories will always stay.
+
 </p>
 
 <div class="gallery">
 
-<img src="Screenshot_20251025_194828_Instagram.jpg">
+<div class="photo">
+<img src="Screenshot_20251025_194828_Instagram.jpg" alt="">
+</div>
 
-<img src="Screenshot_20260129_094846_Instagram.jpg">
+<div class="photo">
+<img src="Screenshot_20260129_094846_Instagram.jpg" alt="">
+</div>
 
-<img src="Screenshot_20260129_094928_Instagram.jpg">
+<div class="photo">
+<img src="Screenshot_20260129_094928_Instagram.jpg" alt="">
+</div>
 
-<img src="Screenshot_20260220_083558_WhatsApp.jpg">
+<div class="photo">
+<img src="Screenshot_20260220_083558_WhatsApp.jpg" alt="">
+</div>
 
-<img src="quality_restoration_20250923003237327.jpg">
+<div class="photo">
+<img src="quality_restoration_20250923003237327.jpg" alt="">
+</div>
 
-<img src="quality_restoration_20250923003514480.jpg">
+<div class="photo">
+<img src="quality_restoration_20250923003514480.jpg" alt="">
+</div>
 
 </div>
 
-<div class="caption">
-Tadaa... ini si botak. 🤏🏻👀
+<div class="message" id="message">
+
+gatau kenapa...
+tapi kamu emang makin ganteng banget pake baju hitam yaa. 🤍
+
 </div>
 
-<button onclick="window.location.href='game2.html'">
-Continue ➜
+<button id="nextBtn"
+onclick="window.location.href='cake.html'">
+
+Ada sesuatu buat kamu 🎁
+
 </button>
 
-</body>
-</html>
+</div>
 
+<!-- Lightbox -->
+
+<div class="lightbox" id="lightbox">
+
+<img id="preview">
+
+</div>
+
+<script>
+
+const photos=document.querySelectorAll(".photo");
+const message=document.getElementById("message");
+const nextBtn=document.getElementById("nextBtn");
+
+let index=0;
+
+/* ============================= */
+/* FOTO MUNCUL SATU-SATU */
+/* ============================= */
+
+function showPhoto(){
+
+if(index<photos.length){
+
+photos[index].classList.add("show");
+
+photos[index].style.animation="breath 3s ease-in-out infinite";
+
+index++;
+
+setTimeout(showPhoto,350);
+
+}else{
+
+setTimeout(()=>{
+
+message.classList.add("show");
+
+},500);
+
+setTimeout(()=>{
+
+nextBtn.classList.add("show");
+
+},1200);
+
+}
+
+}
+
+window.onload=function(){
+
+setTimeout(showPhoto,800);
+
+};
+
+/* ============================= */
+/* LIGHTBOX */
+/* ============================= */
+
+const lightbox=document.getElementById("lightbox");
+const preview=document.getElementById("preview");
+
+photos.forEach(photo=>{
+
+photo.addEventListener("click",()=>{
+
+preview.src=photo.querySelector("img").src;
+
+lightbox.style.display="flex";
+
+});
+
+});
+
+lightbox.addEventListener("click",()=>{
+
+lightbox.style.display="none";
+
+});
+
+/* ============================= */
+/* ESC UNTUK MENUTUP */
+/* ============================= */
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+lightbox.style.display="none";
+
+}
+
+});
+
+/* ============================= */
+/* BUNGA JATUH */
+/* ============================= */
+
+setInterval(function(){
+
+const flower=document.createElement("div");
+
+flower.className="flower";
+
+flower.innerHTML=["🌸","🤍","✨"][Math.floor(Math.random()*3)];
+
+flower.style.left=Math.random()*100+"vw";
+
+flower.style.fontSize=(16+Math.random()*12)+"px";
+
+flower.style.animationDuration=(6+Math.random()*4)+"s";
+
+document.body.appendChild(flower);
+
+setTimeout(function(){
+
+flower.remove();
+
+},10000);
+
+},900);
+
+</script>
+
+</body>
+
+</html>
