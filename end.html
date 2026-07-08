@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html<>
 <html lang="en">
 <head>
 
@@ -22,19 +22,21 @@ box-sizing:border-box;
 
 body{
 
-height:100vh;
-overflow:hidden;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
 background:
 radial-gradient(circle at center,#f8f3f1 0%,#efe5df 55%,#e3d2cb 100%);
 
 font-family:'Poppins',sans-serif;
 
 position:relative;
+
+overflow-x:hidden;
+overflow-y:auto;
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:flex-start;
 
 }
 
@@ -74,12 +76,15 @@ transform:scale(1.15);
 .container{
 
 position:relative;
+
 z-index:5;
 
-width:88%;
+width:90%;
 max-width:900px;
 
 text-align:center;
+
+padding:120px 0;
 
 }
 
@@ -155,10 +160,10 @@ opacity:0;
 
 .final{
 
-position:absolute;
+position:fixed;
 
-top:50%;
 left:50%;
+top:50%;
 
 transform:translate(-50%,-50%);
 
@@ -166,13 +171,18 @@ font-family:'Great Vibes',cursive;
 
 font-size:82px;
 
-color:#5B1F2A;
+color:#ffffff;
 
-letter-spacing:3px;
+letter-spacing:4px;
 
 opacity:0;
 
-z-index:10;
+z-index:999;
+
+text-shadow:
+
+0 0 18px rgba(255,255,255,.35),
+0 0 40px rgba(255,255,255,.18);
 
 }
 
@@ -350,7 +360,7 @@ let x=parseFloat(petal.style.left);
 
 let rotate=Math.random()*360;
 
-let drift=(Math.random()*2)-1;
+let drift=(Math.random()*4)-2;
 
 let speed=1.4+Math.random()*1.2;
 
@@ -382,7 +392,7 @@ petal.remove();
 
 setTimeout(()=>{
 
-setInterval(createPetal,650);
+setInterval(createPetal,900);
 
 },11800);
 
