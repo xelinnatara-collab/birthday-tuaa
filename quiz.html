@@ -48,13 +48,55 @@ box-shadow:0 8px 18px rgba(109,41,50,.25);
 .option:nth-child(3){background:#7BC96F;}
 .option:nth-child(4){background:#A78BFA;}
 
-.option:hover{
-transform:scale(1.05);
 .option{
+
 display:block;
+
 width:100%;
+
 margin:12px 0;
+
+padding:15px;
+
+border:none;
+
+border-radius:15px;
+
+font-size:16px;
+
+font-weight:500;
+
+cursor:pointer;
+
+transition:.3s;
+
+color:white;
+
 }
+
+.option:nth-child(1){
+background:#FF8FAB;
+}
+
+.option:nth-child(2){
+background:#FFD166;
+color:#333;
+}
+
+.option:nth-child(3){
+background:#7BC96F;
+}
+
+.option:nth-child(4){
+background:#A78BFA;
+}
+
+.option:hover{
+
+transform:scale(1.05);
+
+filter:brightness(1.05);
+
 }
 
  @keyframes fade{
@@ -67,10 +109,6 @@ opacity:1;
 transform:translateY(0);
 }
 } 
-  
-.option:hover{
-background:#555;
-}
 
 .finishBox{
 
