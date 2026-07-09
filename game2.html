@@ -426,11 +426,16 @@ document.getElementById("next").style.display="inline-block";
 
 function confetti(){
 
-for(let i=0;i<120;i++){
+const emoji=["🤍","🌸","✨","🎉","🌹"];
+
+let total=80;
+let created=0;
+
+const rain=setInterval(()=>{
 
 const c=document.createElement("div");
 
-c.innerHTML=["🤍","🌸","✨","🎉","🌹"][Math.floor(Math.random()*5)];
+c.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
 
 c.style.position="fixed";
 
@@ -438,28 +443,39 @@ c.style.left=Math.random()*100+"vw";
 
 c.style.top="-40px";
 
-c.style.fontSize=(18+Math.random()*16)+"px";
+c.style.fontSize=(18+Math.random()*18)+"px";
 
 c.style.pointerEvents="none";
 
+c.style.zIndex="9999";
+
 document.body.appendChild(c);
 
+let x=Math.random()*window.innerWidth;
+
 let y=-40;
-let x=parseFloat(c.style.left);
-let drift=(Math.random()*2)-1;
+
+let speed=2+Math.random()*3;
+
+let drift=(Math.random()-0.5)*5;
+
+let rotate=Math.random()*360;
 
 const fall=setInterval(()=>{
 
-y+=4;
+y+=speed;
 
 x+=drift;
 
-c.style.top=y+"px";
+rotate+=2;
+
 c.style.left=x+"px";
 
-c.style.transform=`rotate(${y}deg)`;
+c.style.top=y+"px";
 
-if(y>window.innerHeight+40){
+c.style.transform=`rotate(${rotate}deg)`;
+
+if(y>window.innerHeight+60){
 
 clearInterval(fall);
 
@@ -469,7 +485,15 @@ c.remove();
 
 },20);
 
+created++;
+
+if(created>=total){
+
+clearInterval(rain);
+
 }
+
+},120);
 
 }
 
