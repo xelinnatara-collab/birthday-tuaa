@@ -476,15 +476,19 @@ filter:drop-shadow(0 5px 8px rgba(0,0,0,.18));
 
 animation:roseFloat 3s ease-in-out infinite;
 
+z-index:20;
+
 }
 
 .r1{
 
-left:82px;
+left:150px;
 
-bottom:292px;
+bottom:295px;
 
-font-size:30px;
+font-size:24px;
+
+z-index:20;
 
 }
 
@@ -492,19 +496,23 @@ font-size:30px;
 
 left:170px;
 
-bottom:310px;
+bottom:312px;
 
-font-size:36px;
+font-size:30px;
+
+z-index:21;
 
 }
 
 .r3{
 
-left:258px;
+left:190px;
 
-bottom:292px;
+bottom:295px;
 
-font-size:30px;
+font-size:24px;
+
+z-index:20;
 
 }
 
@@ -853,7 +861,27 @@ function createConfetti(){
 
 const item=document.createElement("div");
 
-item.innerHTML=["🤍","✨","🌸","🌹"][Math.floor(Math.random()*4)];
+const meses = [
+"❦",
+"༄",
+"❁",
+"✿",
+"❀",
+"❋",
+"✾",
+"❈"
+];
+
+item.innerHTML = meses[Math.floor(Math.random()*meses.length)];
+
+const colors = [
+"#6D2932",
+"#8A3C49",
+"#F7EFE8",
+"#FFF8F2"
+];
+
+item.style.color = colors[Math.floor(Math.random()*colors.length)];
 
 item.style.position="fixed";
 item.style.left=Math.random()*100+"vw";
