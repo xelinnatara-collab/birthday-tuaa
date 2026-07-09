@@ -481,6 +481,10 @@ formData.append("access_key","d4f98bd9-a092-4241-a809-c849423e8ed6");
 
 formData.append("subject","💌 Pesan Baru dari Tua");
 
+formData.append("from_name","Website Ulang Tahun Ajam");
+
+formData.append("replyto","no-reply@web.com");
+
 formData.append("Halaman Favorit",favorite);
 
 formData.append("Perasaan",feeling);
@@ -501,7 +505,13 @@ clearInterval(anim);
 
 document.getElementById("loading").style.display="none";
 
-if(res.ok){
+const result = await res.json();
+
+clearInterval(anim);
+
+document.getElementById("loading").style.display="none";
+
+if(result.success){
 
 document.getElementById("thanks").style.display="block";
 
@@ -515,7 +525,7 @@ behavior:"smooth"
 
 }else{
 
-alert("Pesan gagal dikirim 😭");
+alert(result.message);
 
 document.querySelector("button").style.display="inline-block";
 
