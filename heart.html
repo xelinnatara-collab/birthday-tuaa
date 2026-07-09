@@ -4,13 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Catch My Heart</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -23,30 +21,22 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 
-min-height:100vh;
+overflow:hidden;
 
-overflow-x:hidden;
-overflow-y:auto;
+height:100vh;
 
 font-family:'Poppins',sans-serif;
 
 background:
-linear-gradient(135deg,
-#FCF8F6,
-#F4EAE6,
-#EAD9D4);
+linear-gradient(135deg,#FCF8F6,#F3E7E2,#E7D6D0);
 
 position:relative;
 
 }
 
-/* Background Glow */
+/* Glow */
 
 body::before{
 
@@ -65,6 +55,7 @@ height:700px;
 border-radius:50%;
 
 background:
+
 radial-gradient(circle,
 rgba(109,41,50,.08),
 transparent 70%);
@@ -93,66 +84,26 @@ transform:translate(-50%,-50%) scale(1.08);
 
 }
 
-/* Game Area */
+/* ========================= */
 
 #game{
 
 position:relative;
 
-min-height:100vh;
+width:100vw;
+height:100vh;
 
 overflow:hidden;
 
-padding-bottom:180px;
-
 }
 
-/* Sparkle */
-
-.sparkle{
-
-position:absolute;
-
-width:4px;
-height:4px;
-
-border-radius:50%;
-
-background:white;
-
-opacity:.7;
-
-animation:blink 2.5s infinite;
-
-}
-
-@keyframes blink{
-
-0%,100%{
-
-opacity:.25;
-transform:scale(.8);
-
-}
-
-50%{
-
-opacity:1;
-transform:scale(1.4);
-
-}
-
-}
-
-/* Title */
+/* ========================= */
 
 .title{
 
-margin-top:35px;
-
 text-align:center;
 
-padding:0 20px;
+padding-top:35px;
 
 }
 
@@ -160,7 +111,7 @@ padding:0 20px;
 
 font-family:'Cormorant Garamond',serif;
 
-font-size:54px;
+font-size:56px;
 
 color:#6D2932;
 
@@ -168,24 +119,23 @@ color:#6D2932;
 
 .title p{
 
-margin-top:12px;
-
-font-size:17px;
+margin-top:10px;
 
 color:#8A6A67;
 
-line-height:1.7;
+font-size:17px;
+
+line-height:1.8;
 
 }
 
-/* Love Meter */
+/* ========================= */
 
 .meter{
 
-margin:40px auto 0;
+width:340px;
 
-width:90%;
-max-width:380px;
+margin:35px auto 0;
 
 }
 
@@ -195,11 +145,11 @@ text-align:center;
 
 font-weight:600;
 
+font-size:18px;
+
 color:#6D2932;
 
-margin-bottom:15px;
-
-font-size:18px;
+margin-bottom:12px;
 
 }
 
@@ -207,14 +157,13 @@ font-size:18px;
 
 height:18px;
 
-background:#E7D8D5;
+background:#E8D9D6;
 
 border-radius:40px;
 
 overflow:hidden;
 
-box-shadow:
-inset 0 0 8px rgba(0,0,0,.08);
+box-shadow:inset 0 0 8px rgba(0,0,0,.08);
 
 }
 
@@ -224,39 +173,39 @@ height:100%;
 
 width:0%;
 
-background:
-linear-gradient(90deg,
-#6D2932,
-#9A4B59);
+border-radius:40px;
 
-transition:.25s;
+background:
+
+linear-gradient(90deg,#6D2932,#9A4B59);
+
+transition:.3s;
 
 }
 
-/* Gift */
+/* ========================= */
 
 #basket{
 
 position:fixed;
 
-bottom:30px;
+bottom:25px;
 
 left:50%;
 
-transform:translateX(-50%);
-
-font-size:64px;
-
-transition:left .05s linear;
+font-size:65px;
 
 z-index:999;
 
-filter:
-drop-shadow(0 10px 12px rgba(0,0,0,.15));
+user-select:none;
+
+transition:transform .15s;
+
+filter:drop-shadow(0 10px 12px rgba(0,0,0,.18));
 
 }
 
-/* Falling Item */
+/* ========================= */
 
 .item{
 
@@ -266,51 +215,27 @@ font-size:38px;
 
 pointer-events:none;
 
-animation:float 2s ease-in-out infinite;
+user-select:none;
 
 }
 
-@keyframes float{
-
-0%{
-
-transform:translateY(0) rotate(0);
-
-}
-
-50%{
-
-transform:translateY(-8px) rotate(8deg);
-
-}
-
-100%{
-
-transform:translateY(0) rotate(0);
-
-}
-
-}
-
-/* ========================= */
-/* Popup Score */
 /* ========================= */
 
 .popup{
 
 position:absolute;
 
-font-size:22px;
-
 font-weight:700;
+
+font-size:22px;
 
 pointer-events:none;
 
-animation:pop .9s forwards;
+animation:popup .8s forwards;
 
 }
 
-@keyframes pop{
+@keyframes popup{
 
 0%{
 
@@ -324,14 +249,42 @@ transform:translateY(0) scale(.8);
 
 opacity:0;
 
-transform:translateY(-70px) scale(1.15);
+transform:translateY(-70px) scale(1.2);
 
 }
 
 }
 
 /* ========================= */
-/* Finish Popup */
+
+@keyframes bounce{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+.bounce{
+
+animation:bounce .35s;
+
+}
+
 /* ========================= */
 
 #finish{
@@ -341,32 +294,30 @@ display:none;
 position:fixed;
 
 left:50%;
-
 top:50%;
 
 transform:translate(-50%,-50%) scale(.85);
 
-width:92%;
+width:90%;
 max-width:430px;
 
-padding:40px 30px;
+padding:38px;
 
 background:rgba(255,255,255,.95);
 
-backdrop-filter:blur(14px);
-
 border-radius:28px;
 
-box-shadow:
-0 20px 45px rgba(109,41,50,.18);
+backdrop-filter:blur(15px);
+
+box-shadow:0 18px 45px rgba(109,41,50,.18);
 
 text-align:center;
 
-z-index:9999;
-
 opacity:0;
 
-transition:.45s;
+transition:.4s;
+
+z-index:9999;
 
 }
 
@@ -384,23 +335,21 @@ transform:translate(-50%,-50%) scale(1);
 
 font-family:'Great Vibes',cursive;
 
-font-size:58px;
+font-size:60px;
 
 color:#6D2932;
 
-margin-bottom:12px;
+margin-bottom:15px;
 
 }
 
 #finish p{
 
-font-size:17px;
-
 line-height:1.9;
 
 color:#6B5C59;
 
-margin-bottom:28px;
+margin-bottom:25px;
 
 }
 
@@ -422,56 +371,17 @@ font-weight:600;
 
 cursor:pointer;
 
-transition:.35s;
-
-box-shadow:
-0 12px 26px rgba(109,41,50,.25);
+transition:.3s;
 
 }
 
 #finish button:hover{
 
-background:#83414C;
-
 transform:translateY(-3px);
 
-}
-
-/* ========================= */
-/* Bounce Gift */
-/* ========================= */
-
-@keyframes basketBounce{
-
-0%{
-
-transform:translateX(-50%) scale(1);
+background:#82414C;
 
 }
-
-50%{
-
-transform:translateX(-50%) scale(1.12);
-
-}
-
-100%{
-
-transform:translateX(-50%) scale(1);
-
-}
-
-}
-
-.bounce{
-
-animation:basketBounce .7s;
-
-}
-
-/* ========================= */
-/* HTML */
-/* ========================= */
 
 </style>
 
@@ -487,9 +397,9 @@ animation:basketBounce .7s;
 
 <p>
 
-Catch every little heart from Cecel,<br>
+Catch every little heart from Cecel.<br>
 
-then continue our story together. 🌹
+Fill the Love Meter to continue our story.
 
 </p>
 
@@ -503,7 +413,7 @@ Love Meter 🤍
 
 <br>
 
-<span id="angka">
+<span id="score">
 
 0 / 20
 
@@ -527,21 +437,19 @@ Love Meter 🤍
 
 <div id="finish">
 
-<h2>
-
-Yayyy!! 🤍
-
-</h2>
+<h2>Yayyy!! 🤍</h2>
 
 <p>
 
 You caught every little piece of Cecel's heart.
 
-Thank you for staying until this chapter.
+<br><br>
 
 Now...
 
-there's one last thing waiting for you. 🌹
+there's another memory waiting for you.
+
+🌸
 
 </p>
 
@@ -553,62 +461,64 @@ Continue Our Story ➜
 
 </div>
 
+</div>
+
+<div id="popupContainer"></div>
+
 <script>
 
 const game=document.getElementById("game");
 const basket=document.getElementById("basket");
 const fill=document.getElementById("fill");
-const angka=document.getElementById("angka");
-const finish=document.getElementById("finish");
-const nextBtn=document.getElementById("nextBtn");
+const scoreText=document.getElementById("score");
 
 let score=0;
 const target=20;
 
 let basketX=window.innerWidth/2;
-let gameFinished=false;
+let finished=false;
 
 /* ===========================
-   Sparkle Background
+   Gerakan Kado
 =========================== */
 
-for(let i=0;i<40;i++){
+function moveBasket(x){
 
-const s=document.createElement("div");
+const half=35;
 
-s.className="sparkle";
+if(x<half)x=half;
 
-s.style.left=Math.random()*window.innerWidth+"px";
-s.style.top=Math.random()*window.innerHeight+"px";
-s.style.animationDelay=Math.random()*3+"s";
+if(x>window.innerWidth-half)x=window.innerWidth-half;
 
-game.appendChild(s);
+basketX=x;
+
+basket.style.left=(basketX-32)+"px";
 
 }
 
-/* ===========================
-   Gift Movement
-=========================== */
-
 document.addEventListener("mousemove",(e)=>{
 
-basketX=e.clientX;
-basket.style.left=basketX+"px";
+moveBasket(e.clientX);
+
+});
+
+document.addEventListener("touchstart",(e)=>{
+
+moveBasket(e.touches[0].clientX);
 
 });
 
 document.addEventListener("touchmove",(e)=>{
 
-basketX=e.touches[0].clientX;
-basket.style.left=basketX+"px";
+moveBasket(e.touches[0].clientX);
 
 });
 
 /* ===========================
-   Score Popup
+   Popup Score
 =========================== */
 
-function popup(text,x,y,color){
+function popup(text,color,x,y){
 
 const p=document.createElement("div");
 
@@ -616,9 +526,11 @@ p.className="popup";
 
 p.innerHTML=text;
 
-p.style.left=x+"px";
-p.style.top=y+"px";
 p.style.color=color;
+
+p.style.left=x+"px";
+
+p.style.top=y+"px";
 
 game.appendChild(p);
 
@@ -626,100 +538,101 @@ setTimeout(()=>{
 
 p.remove();
 
-},900);
+},800);
 
 }
 
 /* ===========================
-   Falling Items
+   Item Jatuh
 =========================== */
-
-const rain=setInterval(createItem,650);
 
 function createItem(){
 
-if(gameFinished) return;
+if(finished)return;
 
 const item=document.createElement("div");
 
 item.className="item";
 
+const random=Math.random();
+
 let type="heart";
 
-const r=Math.random();
-
-if(r<0.15){
+if(random<0.12){
 
 type="bomb";
 
-}else if(r>0.88){
-
-type="gold";
+item.innerHTML="💣";
 
 }
 
-if(type=="heart") item.innerHTML="❤️";
-if(type=="gold") item.innerHTML="💖";
-if(type=="bomb") item.innerHTML="💣";
+else if(random>0.88){
 
-item.style.left=Math.random()*(window.innerWidth-50)+"px";
-item.style.top="-50px";
+type="gold";
+
+item.innerHTML="💖";
+
+}
+
+else{
+
+item.innerHTML="❤️";
+
+}
+
+const startX=Math.random()*(window.innerWidth-40);
+
+item.style.left=startX+"px";
+
+item.style.top="-40px";
 
 game.appendChild(item);
 
-let y=-50;
+let x=startX;
+
+let y=-40;
+
+const speed=3+Math.random()*2;
+
+const drift=(Math.random()-0.5)*1.4;
 
 const fall=setInterval(()=>{
 
-if(gameFinished){
+if(finished){
 
 clearInterval(fall);
+
 item.remove();
+
 return;
 
 }
 
-y+=5;
+y+=speed;
+
+x+=drift;
 
 item.style.top=y+"px";
 
-const b=basket.getBoundingClientRect();
-const i=item.getBoundingClientRect();
+item.style.left=x+"px";
+
+const basketRect=basket.getBoundingClientRect();
+
+const itemRect=item.getBoundingClientRect();
 
 if(
-i.bottom>=b.top &&
-i.left<b.right &&
-i.right>b.left
+
+itemRect.bottom>=basketRect.top &&
+
+itemRect.left<basketRect.right &&
+
+itemRect.right>basketRect.left
+
 ){
 
 clearInterval(fall);
 
 item.remove();
-
-if(type=="heart"){
-
-score++;
-popup("+1 ❤️",basketX,window.innerHeight-120,"#6D2932");
-
-}
-
-if(type=="gold"){
-
-score+=3;
-popup("+3 💖",basketX,window.innerHeight-120,"#C2185B");
-
-}
-
-if(type=="bomb"){
-
-score=Math.max(0,score-2);
-popup("-2 💣",basketX,window.innerHeight-120,"#B22222");
-
-}
-
-fill.style.width=(score/target*100)+"%";
-
-angka.innerHTML=score+" / "+target;
 
 basket.classList.add("bounce");
 
@@ -727,7 +640,41 @@ setTimeout(()=>{
 
 basket.classList.remove("bounce");
 
-},500);
+},250);
+
+if(type=="heart"){
+
+score++;
+
+popup("+1 ❤️","#6D2932",basketX,window.innerHeight-120);
+
+}
+
+if(type=="gold"){
+
+score+=3;
+
+popup("+3 💖","#C2185B",basketX,window.innerHeight-120);
+
+}
+
+if(type=="bomb"){
+
+score=Math.max(0,score-2);
+
+popup("-2 💣","#C62828",basketX,window.innerHeight-120);
+
+}
+
+fill.style.width=(score/target*100)+"%";
+
+scoreText.innerHTML=score+" / "+target;
+
+if(score>=15 && score<20){
+
+scoreText.innerHTML="🤍 Almost There...<br>"+score+" / "+target;
+
+}
 
 if(score>=target){
 
@@ -737,9 +684,10 @@ winGame();
 
 }
 
-if(y>window.innerHeight){
+if(y>window.innerHeight+60){
 
 clearInterval(fall);
+
 item.remove();
 
 }
@@ -748,69 +696,98 @@ item.remove();
 
 }
 
+const gameLoop=setInterval(createItem,650);
+
 /* ===========================
-   Win
+   WIN GAME
 =========================== */
 
 function winGame(){
 
-if(gameFinished) return;
+if(finished) return;
 
-gameFinished=true;
+finished=true;
 
-clearInterval(rain);
+clearInterval(gameLoop);
 
-confetti();
+scoreText.innerHTML="❤️ COMPLETE ❤️";
 
-finish.classList.add("show");
+fill.style.width="100%";
+
+confettiRain();
+
+setTimeout(()=>{
+
+document.getElementById("finish").classList.add("show");
+
+},1500);
 
 }
 
 /* ===========================
-   Confetti
+   CONFETTI
 =========================== */
 
-function confetti(){
+function confettiRain(){
 
-let total = 40;
-let count = 0;
+const emoji=[
 
-const rain = setInterval(()=>{
+"❤️","🤍","🌸","✨","💖","🌹"
 
-const c = document.createElement("div");
+];
 
-const items = ["🤍","❤️","🌸","✨","🌹"];
+let total=90;
 
-c.innerHTML = items[Math.floor(Math.random()*items.length)];
+let count=0;
 
-c.style.position = "fixed";
-c.style.left = Math.random()*100 + "vw";
-c.style.top = "-40px";
-c.style.fontSize = (18 + Math.random()*18) + "px";
-c.style.pointerEvents = "none";
-c.style.zIndex = "999";
+const rain=setInterval(()=>{
+
+const c=document.createElement("div");
+
+c.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-40px";
+
+c.style.fontSize=(18+Math.random()*18)+"px";
+
+c.style.pointerEvents="none";
+
+c.style.zIndex="99999";
 
 document.body.appendChild(c);
 
-let y = -40;
-let x = Math.random()*window.innerWidth;
-let speed = 2 + Math.random()*3;
-let drift = (Math.random()-0.5)*2;
-let rotate = Math.random()*360;
+let x=Math.random()*window.innerWidth;
 
-const fall = setInterval(()=>{
+let y=-40;
 
-y += speed;
-x += drift;
-rotate += 2;
+let speed=2+Math.random()*3;
 
-c.style.top = y + "px";
-c.style.left = x + "px";
-c.style.transform = `rotate(${rotate}deg)`;
+let drift=(Math.random()-0.5)*3;
 
-if(y > window.innerHeight + 50){
+let rotate=Math.random()*360;
+
+const fall=setInterval(()=>{
+
+y+=speed;
+
+x+=drift;
+
+rotate+=2;
+
+c.style.left=x+"px";
+
+c.style.top=y+"px";
+
+c.style.transform=`rotate(${rotate}deg)`;
+
+if(y>window.innerHeight+60){
 
 clearInterval(fall);
+
 c.remove();
 
 }
@@ -819,29 +796,24 @@ c.remove();
 
 count++;
 
-if(count >= total){
+if(count>=total){
 
 clearInterval(rain);
 
 }
 
-},180);
-
-}
-
-},20);
-
-}
+},90);
 
 }
 
 /* ===========================
-   Next Page
+   NEXT PAGE
 =========================== */
 
-nextBtn.onclick=function(){
+document.getElementById("nextBtn").onclick=function(){
 
 document.body.style.transition="opacity 1.2s ease";
+
 document.body.style.opacity="0";
 
 setTimeout(()=>{
