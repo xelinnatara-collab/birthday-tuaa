@@ -4,13 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sekarang Giliran Kamu</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,17 +16,13 @@
 <style>
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 }
 
 html{
-
 scroll-behavior:smooth;
-
 }
 
 body{
@@ -36,10 +30,14 @@ body{
 font-family:'Poppins',sans-serif;
 
 background:
-linear-gradient(135deg,#FAF6F4,#F3E8E3,#E8D7D1);
+linear-gradient(
+135deg,
+#FAF6F4,
+#F3E8E3,
+#E8D7D1
+);
 
 overflow-x:hidden;
-
 overflow-y:auto;
 
 min-height:100vh;
@@ -50,7 +48,9 @@ position:relative;
 
 }
 
-/* Background Glow */
+/* ==========================
+Background Glow
+========================== */
 
 body::before{
 
@@ -69,10 +69,11 @@ height:700px;
 border-radius:50%;
 
 background:
-
-radial-gradient(circle,
+radial-gradient(
+circle,
 rgba(109,41,50,.08),
-transparent 70%);
+transparent 70%
+);
 
 filter:blur(35px);
 
@@ -98,7 +99,9 @@ transform:translate(-50%,-50%) scale(1.08);
 
 }
 
-/* Card */
+/* ==========================
+Container
+========================== */
 
 .container{
 
@@ -115,12 +118,13 @@ padding:55px;
 border-radius:30px;
 
 box-shadow:
-
 0 18px 45px rgba(109,41,50,.12);
 
 }
 
-/* Title */
+/* ==========================
+Title
+========================== */
 
 .title{
 
@@ -184,6 +188,10 @@ opacity:1;
 
 }
 
+/* ==========================
+Question
+========================== */
+
 .question{
 
 margin-top:28px;
@@ -198,8 +206,11 @@ margin-bottom:14px;
 
 }
 
-select,
+/* ==========================
+Input
+========================== */
 
+select,
 textarea{
 
 width:100%;
@@ -218,7 +229,8 @@ font-size:16px;
 
 font-family:'Poppins',sans-serif;
 
-box-shadow:inset 0 0 8px rgba(0,0,0,.05);
+box-shadow:
+inset 0 0 8px rgba(0,0,0,.05);
 
 margin-bottom:20px;
 
@@ -233,6 +245,10 @@ min-height:150px;
 line-height:1.8;
 
 }
+
+/* ==========================
+Button
+========================== */
 
 button{
 
@@ -252,11 +268,14 @@ font-size:18px;
 
 font-weight:600;
 
+font-family:'Poppins',sans-serif;
+
 cursor:pointer;
 
 transition:.35s;
 
-box-shadow:0 12px 28px rgba(109,41,50,.22);
+box-shadow:
+0 12px 28px rgba(109,41,50,.22);
 
 }
 
@@ -268,52 +287,167 @@ background:#83404C;
 
 }
 
-</style>
+/* ==========================
+Loading
+========================== */
 
-</head>
+#loading{
 
-<body>
+display:none;
+
+margin-top:35px;
+
+font-size:22px;
+
+color:#6D2932;
+
+font-weight:500;
+
+text-align:center;
+
+animation:fade .6s;
+
+}
+
+/* ==========================
+Thanks
+========================== */
+
+#thanks{
+
+display:none;
+
+margin-top:40px;
+
+text-align:center;
+
+animation:fade 1s;
+
+}
+
+#thanks h2{
+
+font-family:'Great Vibes',cursive;
+
+font-size:52px;
+
+color:#6D2932;
+
+}
+
+#thanks p{
+
+margin-top:20px;
+
+font-size:19px;
+
+line-height:2;
+
+color:#6D2932;
+
+}
+
+#thanks .end{
+
+margin-top:35px;
+
+font-family:'Great Vibes',cursive;
+
+font-size:42px;
+
+color:#6D2932;
+
+}
+
+/* ==========================
+Responsive
+========================== */
+
+@media(max-width:600px){
+
+.container{
+
+padding:35px 22px;
+
+}
+
+.title{
+
+font-size:48px;
+
+}
+
+.subtitle{
+
+font-size:17px;
+
+}
+
+.question{
+
+font-size:18px;
+
+}
+
+select,
+textarea{
+
+font-size:15px;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+#thanks h2{
+
+font-size:42px;
+
+}
+
+#thanks .end{
+
+font-size:36px;
+
+}
+
+}
 
 <div class="container">
 
 <h1 class="title">
-
 Sekarang Giliran Kamu 🤍
-
 </h1>
 
 <p class="subtitle">
+Dari awal sampai akhir,
+semuanya tentang cerita dari Cecel.<br><br>
 
-Dari awal sampai akhir, semuanya tentang cerita dari Cecel.<br>
-
-Sekarang... aku pengen denger cerita dari kamu juga. 🌸
-
+Sekarang...
+aku pengen denger cerita dari kamu juga. 🌸
 </p>
+
+<form id="birthdayForm">
 
 <div class="question">
 🌷 Halaman mana yang paling kamu suka?
 </div>
 
-<select id="favorite">
+<select name="favorite" required>
 
 <option value="">-- Pilih yaa --</option>
 
 <option>Chapter 1</option>
-
 <option>Chapter 2</option>
-
 <option>Chapter 3</option>
-
 <option>Chapter 4</option>
-
 <option>Catch My Heart 🤍</option>
-
 <option>One More Gift 🎁</option>
-
 <option>Memory</option>
-
 <option>Birthday Cake 🎂</option>
-
 <option>The End</option>
 
 </select>
@@ -325,37 +459,30 @@ Apa yang kamu rasain waktu buka website ini?
 </div>
 
 <textarea
-id="feeling"
-placeholder="Ceritain aja yaa... aku bakal baca semuanya. 🤍">
-</textarea>
+name="feeling"
+required
+placeholder="Ceritain aja yaa... aku bakal baca semuanya 🤍"></textarea>
 
 <div class="question">
 💌 Ada sesuatu yang pengen kamu sampaikan buat Cecel?
 </div>
 
 <textarea
-id="message"
-placeholder="Write anything you want... 🤍">
-</textarea>
+name="message"
+required
+placeholder="Write anything you want... 🤍"></textarea>
 
 <div style="text-align:center;">
 
-<button onclick="sendMessage()">
-
+<button type="submit">
 Kirim Buat Cecel 🤍
-
 </button>
 
 </div>
 
-<div id="loading"
+</form>
 
-style="display:none;
-margin-top:35px;
-font-size:22px;
-color:#6D2932;
-font-weight:500;
-text-align:center;">
+<div id="loading">
 
 🤍
 
@@ -369,26 +496,13 @@ Mengirim pesan...
 
 </div>
 
-<div id="thanks"
+<div id="thanks">
 
-style="display:none;
-margin-top:40px;
-text-align:center;">
-
-<h2 style="
-font-family:'Great Vibes',cursive;
-font-size:52px;
-color:#6D2932;">
-
+<h2>
 Makasih yaa Tua... 🤍
-
 </h2>
 
-<p style="
-margin-top:20px;
-font-size:19px;
-line-height:2;
-color:#6D2932;">
+<p>
 
 Kalau kamu sampai baca sejauh ini,<br>
 
@@ -406,19 +520,13 @@ sambil ketawa bareng. 🌸
 
 </p>
 
-<div style="
-margin-top:35px;
-font-family:'Great Vibes',cursive;
-font-size:42px;
-color:#6D2932;">
+<div class="end">
 
 See you in another story. 🤍
 
 </div>
 
-<button
-style="margin-top:35px;"
-onclick="location.href='end.html'">
+<button id="endButton">
 
 The End
 
@@ -428,92 +536,55 @@ The End
 
 </div>
 
-<script>
+const form = document.getElementById("birthdayForm");
+const loading = document.getElementById("loading");
+const thanks = document.getElementById("thanks");
+const dots = document.getElementById("dots");
+const endButton = document.getElementById("endButton");
 
-async function sendMessage(){
+form.addEventListener("submit", async function(e){
 
-const favorite=document.getElementById("favorite").value;
-const feeling=document.getElementById("feeling").value.trim();
-const message=document.getElementById("message").value.trim();
+e.preventDefault();
 
-if(favorite==""){
-
-alert("Pilih halaman favorit dulu ya 🤍");
-return;
-
-}
-
-if(feeling==""){
-
-alert("Isi dulu perasaanmu ya 🌸");
-return;
-
-}
-
-if(message==""){
-
-alert("Tulis sesuatu buat Cecel dulu 🤍");
-return;
-
-}
-
-document.querySelector("button").style.display="none";
-
-document.getElementById("loading").style.display="block";
-
-const dots=document.getElementById("dots");
+loading.style.display="block";
 
 let n=1;
 
 const anim=setInterval(()=>{
 
-dots.innerHTML=".".repeat(n);
+dots.textContent=".".repeat(n);
 
 n++;
 
-if(n>3)n=1;
+if(n>3) n=1;
 
 },500);
 
-const formData=new FormData();
-
-formData.append("access_key","d4f98bd9-a092-4241-a809-c849423e8ed6");
-
-formData.append("subject","💌 Pesan Baru dari Tua");
-
-formData.append("from_name","Website Ulang Tahun Ajam");
-
-formData.append("replyto","no-reply@web.com");
-
-formData.append("Halaman Favorit",favorite);
-
-formData.append("Perasaan",feeling);
-
-formData.append("Pesan",message);
+const formData=new FormData(form);
 
 try{
 
-const res=await fetch("https://api.web3forms.com/submit",{
+const response=await fetch("https://formspree.io/f/xbdvvega",{
 
 method:"POST",
 
-body:formData
+body:formData,
+
+headers:{
+'Accept':'application/json'
+}
 
 });
 
 clearInterval(anim);
 
-document.getElementById("loading").style.display="none";
+loading.style.display="none";
 
-const result = await res.json();
+if(response.ok){
 
-clearInterval(anim);
+form.style.display="none";
 
-document.getElementById("loading").style.display="none";
-
-if(result.success){
-
-document.getElementById("thanks").style.display="block";
+thanks.style.display="block";
 
 window.scrollTo({
 
@@ -525,25 +596,90 @@ behavior:"smooth"
 
 }else{
 
-alert(result.message);
+alert("Pesan gagal dikirim 😭 Coba lagi ya.");
 
-document.querySelector("button").style.display="inline-block";
+form.style.display="block";
 
 }
 
-}catch(e){
+}catch(error){
 
 clearInterval(anim);
 
+loading.style.display="none";
+
 alert("Tidak ada koneksi internet 😭");
 
-document.querySelector("button").style.display="inline-block";
+form.style.display="block";
 
 }
 
+});
+
+endButton.onclick=function(){
+
+document.body.style.transition="opacity 1.4s ease";
+
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+
+window.location.href="end.html";
+
+},1400);
+
+};
+
+/* ==========================
+Fade saat halaman dibuka
+========================== */
+
+window.onload=function(){
+
+document.body.style.opacity="0";
+
+document.body.style.transition="opacity 1.3s ease";
+
+setTimeout(()=>{
+
+document.body.style.opacity="1";
+
+},100);
+
+};
+
+/* ==========================
+Hover halus tombol
+========================== */
+
+document.querySelectorAll("button").forEach(btn=>{
+
+btn.addEventListener("mouseenter",()=>{
+
+btn.style.transform="translateY(-4px) scale(1.02)";
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translateY(0) scale(1)";
+
+});
+
+});
+
+/* ==========================
+Enter = Submit
+========================== */
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Enter" && e.ctrlKey){
+
+form.requestSubmit();
+
 }
 
-</script>
+});
 
-</body>
-</html>
+  
