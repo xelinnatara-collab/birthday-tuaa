@@ -379,43 +379,37 @@ sign.style.animation="fade 1.5s forwards";
    Rose Falling
 =========================== */
 
-function createPetal(){
+function createLight(){
 
-const petal=document.createElement("div");
+const light=document.createElement("div");
 
-petal.className="petal";
+light.className="petal";
 
-petal.innerHTML=Math.random()>0.5?"🌹":"🌸";
+light.innerHTML="✦";
 
-petal.style.left=Math.random()*100+"vw";
+light.style.left=Math.random()*100+"vw";
+light.style.fontSize=(10+Math.random()*10)+"px";
+light.style.color=Math.random()>.5?"#F8EFE8":"#C9A27D";
 
-petal.style.fontSize=(18+Math.random()*18)+"px";
+document.body.appendChild(light);
 
-document.body.appendChild(petal);
+let y=-30;
+let x=parseFloat(light.style.left);
+let drift=(Math.random()*2)-1;
 
-let y=-60;
-let x=parseFloat(petal.style.left);
+const fly=setInterval(()=>{
 
-let rotate=Math.random()*360;
-
-let drift=(Math.random()*2.8)-1.4;
-
-let speed=1.5+Math.random()*1.4;
-
-const fall=setInterval(()=>{
-
-y+=speed;
+y+=1.4;
 x+=drift;
-rotate+=1.5;
 
-petal.style.top=y+"px";
-petal.style.left=x+"px";
-petal.style.transform=`rotate(${rotate}deg)`;
+light.style.top=(window.innerHeight-y)+"px";
+light.style.left=x+"px";
+light.style.opacity=1-(y/window.innerHeight);
 
-if(y>window.innerHeight+80){
+if(y>window.innerHeight+40){
 
-clearInterval(fall);
-petal.remove();
+clearInterval(fly);
+light.remove();
 
 }
 
@@ -427,9 +421,9 @@ let petalLoop;
 
 setTimeout(()=>{
 
-petalLoop=setInterval(createPetal,350);
+petalLoop = setInterval(createLight,500);
 
-},11500);
+},11800);
 
 /* ===========================
    Fade Story
