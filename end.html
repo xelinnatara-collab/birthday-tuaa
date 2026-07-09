@@ -1,5 +1,6 @@
-<!DOCTYPE html<>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -20,6 +21,10 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 
 background:
@@ -38,40 +43,72 @@ display:flex;
 justify-content:center;
 align-items:flex-start;
 
+transition:
+background 8s ease,
+transform 8s ease;
+
 }
 
-/* Glow */
+/* ===========================
+   Background Glow
+=========================== */
 
 body::before{
 
 content:"";
 
-position:absolute;
+position:fixed;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
 
 width:700px;
 height:700px;
 
-background:radial-gradient(circle,
+border-radius:50%;
+
+background:
+radial-gradient(circle,
 rgba(109,41,50,.08),
 transparent 70%);
 
-border-radius:50%;
+filter:blur(28px);
 
 animation:glow 8s ease-in-out infinite alternate;
+
+transition:opacity 5s ease;
+
+z-index:0;
+
+}
+
+body.dark::before{
+
+opacity:0;
 
 }
 
 @keyframes glow{
 
 from{
-transform:scale(.9);
+
+transform:translate(-50%,-50%) scale(.92);
+
 }
 
 to{
-transform:scale(1.15);
+
+transform:translate(-50%,-50%) scale(1.12);
+
 }
 
 }
+
+/* ===========================
+   Container
+=========================== */
 
 .container{
 
@@ -82,13 +119,15 @@ z-index:5;
 width:90%;
 max-width:900px;
 
-text-align:center;
-
 padding:120px 0;
+
+text-align:center;
 
 }
 
-/* Quote */
+/* ===========================
+   Quote
+=========================== */
 
 .quote{
 
@@ -106,7 +145,9 @@ transform:translateY(35px);
 
 }
 
-/* Paragraph */
+/* ===========================
+   Paragraph
+=========================== */
 
 .text{
 
@@ -126,7 +167,9 @@ transform:translateY(30px);
 
 }
 
-/* Signature */
+/* ===========================
+   Signature
+=========================== */
 
 .signature{
 
@@ -142,7 +185,9 @@ opacity:0;
 
 }
 
-/* Heart */
+/* ===========================
+   Heart
+=========================== */
 
 .heart{
 
@@ -156,7 +201,9 @@ opacity:0;
 
 }
 
-/* Final Text */
+/* ===========================
+   THE END
+=========================== */
 
 .final{
 
@@ -171,9 +218,9 @@ font-family:'Great Vibes',cursive;
 
 font-size:82px;
 
-color:#ffffff;
-
 letter-spacing:4px;
+
+color:white;
 
 opacity:0;
 
@@ -186,11 +233,13 @@ text-shadow:
 
 }
 
-/* Petals */
+/* ===========================
+   Rose
+=========================== */
 
 .petal{
 
-position:absolute;
+position:fixed;
 
 top:-60px;
 
@@ -198,7 +247,13 @@ pointer-events:none;
 
 user-select:none;
 
+z-index:3;
+
 }
+
+/* ===========================
+   Animations
+=========================== */
 
 @keyframes fadeUp{
 
@@ -253,7 +308,6 @@ I'll always carry with me.
 <div class="text" id="text3">
 
 No matter where life takes us,<br>
-
 I'll always be grateful that our paths crossed.
 
 </div>
@@ -267,7 +321,6 @@ I'll always be grateful that our paths crossed.
 <div class="signature" id="sign">
 
 With love,<br>
-
 Cecel.
 
 </div>
@@ -282,63 +335,49 @@ The End
 
 <script>
 
+/* ===========================
+   Elements
+=========================== */
+
 const quote=document.getElementById("quote");
-
 const text1=document.getElementById("text1");
-
 const text2=document.getElementById("text2");
-
 const text3=document.getElementById("text3");
-
 const heart=document.getElementById("heart");
-
 const sign=document.getElementById("sign");
-
 const finalText=document.getElementById("finalText");
 
-/* ========================= */
-/* Text Animation */
-/* ========================= */
+/* ===========================
+   Story Animation
+=========================== */
 
 setTimeout(()=>{
-
 quote.style.animation="fadeUp 1.8s forwards";
-
 },800);
 
 setTimeout(()=>{
-
 text1.style.animation="fadeUp 1.4s forwards";
-
 },3200);
 
 setTimeout(()=>{
-
 text2.style.animation="fadeUp 1.4s forwards";
-
 },5200);
 
 setTimeout(()=>{
-
 text3.style.animation="fadeUp 1.4s forwards";
-
 },7600);
 
 setTimeout(()=>{
-
 heart.style.animation="fade 1s forwards";
-
 },9800);
 
 setTimeout(()=>{
-
 sign.style.animation="fade 1.5s forwards";
-
 },10800);
 
-/* ========================= */
-/* Rose Petals */
-/* ========================= */
+/* ===========================
+   Rose Falling
+=========================== */
 
 function createPetal(){
 
@@ -346,42 +385,36 @@ const petal=document.createElement("div");
 
 petal.className="petal";
 
-petal.innerHTML=["🌹","🥀"][Math.floor(Math.random()*2)];
+petal.innerHTML=Math.random()>0.5?"🌹":"🌸";
 
 petal.style.left=Math.random()*100+"vw";
 
-petal.style.fontSize=(18+Math.random()*16)+"px";
+petal.style.fontSize=(18+Math.random()*18)+"px";
 
 document.body.appendChild(petal);
 
 let y=-60;
-
 let x=parseFloat(petal.style.left);
 
 let rotate=Math.random()*360;
 
-let drift=(Math.random()*4)-2;
+let drift=(Math.random()*2.8)-1.4;
 
-let speed=1.4+Math.random()*1.2;
+let speed=1.5+Math.random()*1.4;
 
 const fall=setInterval(()=>{
 
 y+=speed;
-
 x+=drift;
-
-rotate+=1.3;
+rotate+=1.5;
 
 petal.style.top=y+"px";
-
 petal.style.left=x+"px";
-
 petal.style.transform=`rotate(${rotate}deg)`;
 
 if(y>window.innerHeight+80){
 
 clearInterval(fall);
-
 petal.remove();
 
 }
@@ -390,64 +423,92 @@ petal.remove();
 
 }
 
-setTimeout(()=>{
-
-setInterval(createPetal,900);
-
-},11800);
-
-/* ========================= */
-/* Fade Story */
-/* ========================= */
+let petalLoop;
 
 setTimeout(()=>{
 
-document.querySelector(".container").style.transition="opacity 3.5s ease";
+petalLoop=setInterval(createPetal,350);
+
+},11500);
+
+/* ===========================
+   Fade Story
+=========================== */
+
+setTimeout(()=>{
+
+document.querySelector(".container").style.transition="opacity 4s ease";
 
 document.querySelector(".container").style.opacity="0";
 
 },17500);
 
-/* ========================= */
-/* Dark Background */
-/* ========================= */
+/* ===========================
+   Background Change
+=========================== */
 
 setTimeout(()=>{
 
-document.body.style.transition="background 4s ease";
+document.body.classList.add("dark");
 
 document.body.style.background="#2A151B";
 
 },18500);
 
-/* ========================= */
-/* Show The End */
-/* ========================= */
+/* ===========================
+   Show The End
+=========================== */
 
 setTimeout(()=>{
 
-finalText.style.animation="fade 2.5s forwards";
+finalText.style.transition="opacity 2.5s ease";
+
+finalText.style.opacity="1";
 
 },22000);
 
-/* ========================= */
-/* Slow Zoom */
-/* ========================= */
+/* ===========================
+   Stay a Little Longer
+=========================== */
 
 setTimeout(()=>{
 
-document.body.style.transition+=" , transform 8s ease";
+finalText.style.transition="opacity 5s ease";
+
+finalText.style.opacity="0";
+
+},30000);
+
+/* ===========================
+   Stop Rose
+=========================== */
+
+setTimeout(()=>{
+
+clearInterval(petalLoop);
+
+},34000);
+
+/* ===========================
+   Slow Zoom
+=========================== */
+
+setTimeout(()=>{
 
 document.body.style.transform="scale(1.02)";
 
 },22500);
 
-/* ========================= */
-/* Stay on Ending */
-/* ========================= */
+/* ===========================
+   End
+=========================== */
 
-/* Tidak redirect ke index lagi.
-   Biarkan halaman berhenti di "The End". */
+/*
+Tidak redirect ke halaman mana pun.
+Biarkan website berhenti di ending ini
+dengan background maroon dan bunga
+yang perlahan berhenti.
+*/
 
 </script>
 
