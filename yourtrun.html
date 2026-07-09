@@ -430,7 +430,7 @@ The End
 
 <script>
 
-function sendMessage(){
+async function sendMessage(){
 
 const favorite=document.getElementById("favorite").value;
 const feeling=document.getElementById("feeling").value.trim();
@@ -438,56 +438,70 @@ const message=document.getElementById("message").value.trim();
 
 if(favorite==""){
 
-alert("Pilih dulu halaman favoritnya yaa 🤍");
+alert("Pilih halaman favorit dulu ya 🤍");
 return;
 
 }
 
 if(feeling==""){
 
-alert("Ceritain dulu perasaanmu yaa 🌸");
+alert("Isi dulu perasaanmu ya 🌸");
 return;
 
 }
 
 if(message==""){
 
-alert("Tulis sesuatu buat Cecel dong 🥺");
+alert("Tulis sesuatu buat Cecel dulu 🤍");
 return;
 
 }
 
-/* Sembunyikan form */
-
-document.querySelector(".question").parentElement.style.pointerEvents="none";
-
 document.querySelector("button").style.display="none";
-
-/* Loading */
 
 document.getElementById("loading").style.display="block";
 
-let titik=0;
-
 const dots=document.getElementById("dots");
 
-const animasi=setInterval(()=>{
+let n=1;
 
-titik++;
+const anim=setInterval(()=>{
 
-if(titik>3) titik=1;
+dots.innerHTML=".".repeat(n);
 
-dots.innerHTML=".".repeat(titik);
+n++;
+
+if(n>3)n=1;
 
 },500);
 
-/* Simulasi mengirim */
+const formData=new FormData();
 
-setTimeout(()=>{
+formData.append("access_key","d4f98bd9-a092-4241-a809-c849423e8ed6");
 
-clearInterval(animasi);
+formData.append("subject","💌 Pesan Baru dari Tua");
+
+formData.append("Halaman Favorit",favorite);
+
+formData.append("Perasaan",feeling);
+
+formData.append("Pesan",message);
+
+try{
+
+const res=await fetch("https://api.web3forms.com/submit",{
+
+method:"POST",
+
+body:formData
+
+});
+
+clearInterval(anim);
 
 document.getElementById("loading").style.display="none";
+
+if(res.ok){
 
 document.getElementById("thanks").style.display="block";
 
@@ -499,7 +513,23 @@ behavior:"smooth"
 
 });
 
-},2500);
+}else{
+
+alert("Pesan gagal dikirim 😭");
+
+document.querySelector("button").style.display="inline-block";
+
+}
+
+}catch(e){
+
+clearInterval(anim);
+
+alert("Tidak ada koneksi internet 😭");
+
+document.querySelector("button").style.display="inline-block";
+
+}
 
 }
 
