@@ -1,1 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sekarang Giliran Kamu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(135deg,#FAF6F4,#F3E8E3,#E8D7D1);
+
+overflow-x:hidden;
+
+overflow-y:auto;
+
+min-height:100vh;
+
+padding:70px 20px;
+
+position:relative;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+rgba(109,41,50,.08),
+transparent 70%);
+
+filter:blur(35px);
+
+animation:glow 8s ease-in-out infinite alternate;
+
+z-index:-2;
+
+}
+
+@keyframes glow{
+
+from{
+
+transform:translate(-50%,-50%) scale(.92);
+
+}
+
+to{
+
+transform:translate(-50%,-50%) scale(1.08);
+
+}
+
+}
+
+/* Card */
+
+.container{
+
+max-width:760px;
+
+margin:auto;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+padding:55px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 18px 45px rgba(109,41,50,.12);
+
+}
+
+/* Title */
+
+.title{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:62px;
+
+color:#6D2932;
+
+text-align:center;
+
+margin-bottom:18px;
+
+opacity:0;
+
+transform:translateY(-20px);
+
+animation:fadeDown 1.4s forwards;
+
+}
+
+.subtitle{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#7D6764;
+
+text-align:center;
+
+margin-bottom:45px;
+
+opacity:0;
+
+animation:fade 2s forwards;
+
+animation-delay:.8s;
+
+}
+
+@keyframes fadeDown{
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fade{
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+.question{
+
+margin-top:28px;
+
+font-size:20px;
+
+font-weight:600;
+
+color:#6D2932;
+
+margin-bottom:14px;
+
+}
+
+select,
+
+textarea{
+
+width:100%;
+
+border:none;
+
+outline:none;
+
+padding:18px;
+
+border-radius:18px;
+
+background:#FFFDFC;
+
+font-size:16px;
+
+font-family:'Poppins',sans-serif;
+
+box-shadow:inset 0 0 8px rgba(0,0,0,.05);
+
+margin-bottom:20px;
+
+resize:none;
+
+}
+
+textarea{
+
+min-height:150px;
+
+line-height:1.8;
+
+}
+
+button{
+
+margin-top:25px;
+
+padding:18px 42px;
+
+border:none;
+
+border-radius:45px;
+
+background:#6D2932;
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 12px 28px rgba(109,41,50,.22);
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+background:#83404C;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+
+Sekarang Giliran Kamu 🤍
+
+</h1>
+
+<p class="subtitle">
+
+Dari awal sampai akhir, semuanya tentang cerita dari Cecel.<br>
+
+Sekarang... aku pengen denger cerita dari kamu juga. 🌸
+
+</p>
+
+<div class="question">
+🌷 Halaman mana yang paling kamu suka?
+</div>
+
+<select id="favorite">
+
+<option value="">-- Pilih yaa --</option>
+
+<option>Chapter 1</option>
+
+<option>Chapter 2</option>
+
+<option>Chapter 3</option>
+
+<option>Chapter 4</option>
+
+<option>Catch My Heart 🤍</option>
+
+<option>One More Gift 🎁</option>
+
+<option>Memory</option>
+
+<option>Birthday Cake 🎂</option>
+
+<option>The End</option>
+
+</select>
+
+<div class="question">
+🤎 Setelah selesai lihat semuanya...
+<br><br>
+Apa yang kamu rasain waktu buka website ini?
+</div>
+
+<textarea
+id="feeling"
+placeholder="Ceritain aja yaa... aku bakal baca semuanya. 🤍">
+</textarea>
+
+<div class="question">
+💌 Ada sesuatu yang pengen kamu sampaikan buat Cecel?
+</div>
+
+<textarea
+id="message"
+placeholder="Write anything you want... 🤍">
+</textarea>
+
+<div style="text-align:center;">
+
+<button onclick="sendMessage()">
+
+Kirim Buat Cecel 🤍
+
+</button>
+
+</div>
+
+<div id="loading"
+
+style="display:none;
+margin-top:35px;
+font-size:22px;
+color:#6D2932;
+font-weight:500;
+text-align:center;">
+
+🤍
+
+<br><br>
+
+Mengirim pesan...
+
+<br><br>
+
+<span id="dots">.</span>
+
+</div>
+
+<div id="thanks"
+
+style="display:none;
+margin-top:40px;
+text-align:center;">
+
+<h2 style="
+font-family:'Great Vibes',cursive;
+font-size:52px;
+color:#6D2932;">
+
+Makasih yaa Tua... 🤍
+
+</h2>
+
+<p style="
+margin-top:20px;
+font-size:19px;
+line-height:2;
+color:#6D2932;">
+
+Kalau kamu sampai baca sejauh ini,<br>
+
+berarti semua waktu yang aku habisin<br>
+
+buat bikin website ini nggak sia-sia.
+
+<br><br>
+
+Semoga suatu hari nanti,<br>
+
+kita bisa buka website ini lagi<br>
+
+sambil ketawa bareng. 🌸
+
+</p>
+
+<div style="
+margin-top:35px;
+font-family:'Great Vibes',cursive;
+font-size:42px;
+color:#6D2932;">
+
+See you in another story. 🤍
+
+</div>
+
+<button
+style="margin-top:35px;"
+onclick="location.href='end.html'">
+
+The End
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+const favorite=document.getElementById("favorite").value;
+const feeling=document.getElementById("feeling").value.trim();
+const message=document.getElementById("message").value.trim();
+
+if(favorite==""){
+
+alert("Pilih dulu halaman favoritnya yaa 🤍");
+return;
+
+}
+
+if(feeling==""){
+
+alert("Ceritain dulu perasaanmu yaa 🌸");
+return;
+
+}
+
+if(message==""){
+
+alert("Tulis sesuatu buat Cecel dong 🥺");
+return;
+
+}
+
+/* Sembunyikan form */
+
+document.querySelector(".question").parentElement.style.pointerEvents="none";
+
+document.querySelector("button").style.display="none";
+
+/* Loading */
+
+document.getElementById("loading").style.display="block";
+
+let titik=0;
+
+const dots=document.getElementById("dots");
+
+const animasi=setInterval(()=>{
+
+titik++;
+
+if(titik>3) titik=1;
+
+dots.innerHTML=".".repeat(titik);
+
+},500);
+
+/* Simulasi mengirim */
+
+setTimeout(()=>{
+
+clearInterval(animasi);
+
+document.getElementById("loading").style.display="none";
+
+document.getElementById("thanks").style.display="block";
+
+window.scrollTo({
+
+top:document.body.scrollHeight,
+
+behavior:"smooth"
+
+});
+
+},2500);
+
+}
+
+</script>
+
+</body>
+</html>
