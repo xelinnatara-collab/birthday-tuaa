@@ -1,52 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Quiz Time</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
+
 background:linear-gradient(135deg,#F6F1EE,#ECE2DD,#E5D7D0);
-color:#444;
+
 font-family:'Poppins',sans-serif;
-text-align:center;
-padding:40px;
-line-height:1.7;
-letter-spacing:.3px;  
+
+color:#444;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+min-height:100vh;
+
+padding:25px;
+
+overflow-x:hidden;
+
 }
 
 .box{
-max-width:500px;
-margin:auto;
+
+width:100%;
+max-width:550px;
+
 background:white;
-padding:30px;
-border-radius:24px;
-box-shadow:0 12px 30px rgba(109,41,50,.15);
+
+padding:35px;
+
+border-radius:26px;
+
+box-shadow:0 15px 35px rgba(109,41,50,.15);
+
 animation:fade .8s;
-}
-  
-button{
-display:inline-block;
-margin-top:30px;
-padding:15px 35px;
-border:none;
-border-radius:40px;
-background:#6D2932;
-color:white;
-font-size:17px;
-font-weight:600;
-cursor:pointer;
-transition:.35s ease;
-box-shadow:0 8px 18px rgba(109,41,50,.25);
+
+text-align:center;
+
 }
 
-.option:nth-child(1){background:#FF8FAB;}
-.option:nth-child(2){background:#FFD166;color:#333;}
-.option:nth-child(3){background:#7BC96F;}
-.option:nth-child(4){background:#A78BFA;}
+h1{
+
+font-family:'Cormorant Garamond',serif;
+
+color:#6D2932;
+
+font-size:42px;
+
+margin-bottom:10px;
+
+}
+
+.desc{
+
+font-size:17px;
+
+line-height:1.8;
+
+color:#777;
+
+margin-bottom:35px;
+
+}
+
+#question{
+
+color:#6D2932;
+
+margin-bottom:20px;
+
+font-size:23px;
+
+}
 
 .option{
 
@@ -56,11 +102,11 @@ width:100%;
 
 margin:12px 0;
 
-padding:15px;
+padding:16px;
 
 border:none;
 
-border-radius:15px;
+border-radius:16px;
 
 font-size:16px;
 
@@ -75,56 +121,70 @@ color:white;
 }
 
 .option:nth-child(1){
+
 background:#FF8FAB;
+
 }
 
 .option:nth-child(2){
+
 background:#FFD166;
+
 color:#333;
+
 }
 
 .option:nth-child(3){
+
 background:#7BC96F;
+
 }
 
 .option:nth-child(4){
+
 background:#A78BFA;
+
 }
 
 .option:hover{
 
-transform:scale(1.05);
+transform:scale(1.04);
 
 filter:brightness(1.05);
 
 }
 
- @keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-} 
-
 .finishBox{
 
 display:none;
 
-margin-top:25px;
+margin-top:30px;
 
 animation:fade .8s;
 
 }
 
+.finishBox h2{
+
+color:#6D2932;
+
+margin-bottom:15px;
+
+}
+
+.finishBox p{
+
+line-height:1.8;
+
+color:#666;
+
+}
+
 .finishBox button{
 
-margin-top:18px;
+margin-top:25px;
 
-padding:15px 35px;
+padding:15px 38px;
 
 border:none;
 
@@ -142,13 +202,86 @@ cursor:pointer;
 
 transition:.3s;
 
+box-shadow:0 8px 18px rgba(109,41,50,.25);
+
 }
 
 .finishBox button:hover{
 
 transform:scale(1.05);
 
-background:#87414C;
+}
+
+.popup{
+
+position:fixed;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%) scale(.8);
+
+background:white;
+
+padding:25px 35px;
+
+border-radius:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.35s;
+
+z-index:99;
+
+max-width:330px;
+
+}
+
+.popup.show{
+
+opacity:1;
+
+transform:translate(-50%,-50%) scale(1);
+
+}
+
+.popup h3{
+
+color:#6D2932;
+
+margin-bottom:10px;
+
+}
+
+.popup p{
+
+line-height:1.7;
+
+color:#666;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
 
 }
 
@@ -160,10 +293,12 @@ background:#87414C;
 
 <div class="box">
 
-<h1>🌸Seberapa Kamu Kenal Cecel?🌸</h1>
+<h1>🌸 Seberapa Kamu Kenal Cecel? 🌸</h1>
 
-<p style="font-size:18px;">
-Selesaikan tantangan kecil ini untuk membuka surat rahasia. 😽
+<p class="desc">
+
+Selesaikan tantangan kecil ini untuk membuka surat rahasia. 🤍
+
 </p>
 
 <h3 id="question"></h3>
@@ -176,7 +311,7 @@ Selesaikan tantangan kecil ini untuk membuka surat rahasia. 😽
 
 <p>
 
-Ternyata Tua kenal Cecel yaa. 🤍<br>
+Ternyata Tua kenal Cecel yaa. 🤍<br><br>
 
 Sekarang aku mau nunjukin sesuatu buat kamu...
 
@@ -190,6 +325,16 @@ Continue ☁️
 
 </div>
 
+</div>
+
+<div class="popup" id="popup">
+
+<h3>🤍</h3>
+
+<p id="popupText"></p>
+
+</div>
+
 <script>
 
 let nomor=0;
@@ -197,9 +342,9 @@ let nomor=0;
 const quiz=[
 
 {
-q:"1. Makanan yang menaikkan mood Cecel?",
+q:"1. Makanan yang paling bisa bikin mood Cecel naik?",
 a:[
-["Miee","Aku dikasih semua juga suka, tapi lebih suka kamu hahaha 🙀🤍"],
+["Miee","🍜 Hehe benerr! Aku dikasih apa aja juga suka, tapi lebih suka kamu hahaha 🙀🤍"],
 ["Dimsum",false],
 ["Terang Bulan",false],
 ["Nasi Goreng",false]
@@ -207,11 +352,11 @@ a:[
 },
 
 {
-q:"2. Warna favorite Cecel?",
+q:"2. Warna favorit Cecel?",
 a:[
 ["Putih",false],
 ["Abu",false],
-["Ungu","Wahh otaknya tuaa berapa GB ya kok inget? 😽💜"],
+["Ungu","💜 Wahhh... otaknya Tua berapa GB sih kok masih inget? 😽"],
 ["Hitam",false]
 ]
 },
@@ -222,9 +367,9 @@ a:[
 ["Matcha",false],
 ["Kucing",false],
 ["Dracin",false],
-["Kamu","Ihhh tuaa pede bangettt yaa 😼"]
+["Kamu","😼 Ihhh Tua pede bangettt... tapi iya kok 🤍"]
 ]
-},
+}
 
 ];
 
@@ -232,17 +377,17 @@ showQuestion();
 
 function showQuestion(){
 
-let q=quiz[nomor];
+const q=quiz[nomor];
 
 document.getElementById("question").innerHTML=q.q;
 
-let ans=document.getElementById("answers");
+const answers=document.getElementById("answers");
 
-ans.innerHTML="";
+answers.innerHTML="";
 
 q.a.forEach(item=>{
 
-let btn=document.createElement("button");
+const btn=document.createElement("button");
 
 btn.className="option";
 
@@ -250,15 +395,17 @@ btn.innerHTML=item[0];
 
 btn.onclick=function(){
 
-if(item[1]==false){
+if(item[1]===false){
 
-alert("kok bisa salah sih ganteng 😾");
+showPopup("🙄 Yahhh... masih salah nih.<br>Coba lagi yaa Tua 🤍");
 
-}else{
+return;
+
+}
+
+showPopup(item[1]);
 
 setTimeout(()=>{
-alert(item[1]+" 💕");
-},200);
 
 nomor++;
 
@@ -276,11 +423,29 @@ showQuestion();
 
 }
 
+},1800);
+
 };
 
-ans.appendChild(btn);
+answers.appendChild(btn);
 
 });
+
+}
+
+function showPopup(text){
+
+const popup=document.getElementById("popup");
+
+document.getElementById("popupText").innerHTML=text;
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+
+popup.classList.remove("show");
+
+},1500);
 
 }
 
@@ -292,11 +457,38 @@ window.location.href="transition.html";
 
 </script>
 
-<div style="position:fixed;top:20px;left:20px;font-size:25px;">🦋</div>
-<div style="position:fixed;top:80px;right:30px;font-size:22px;">🌸</div>
-<div style="position:fixed;bottom:30px;left:40px;font-size:20px;">🤍</div>
-<div style="position:fixed;bottom:50px;right:40px;font-size:24px;">✨</div>
+<div style="position:fixed;top:20px;left:20px;font-size:26px;">
+🦋
+</div>
+
+<div style="position:fixed;top:80px;right:30px;font-size:22px;">
+🌸
+</div>
+
+<div style="position:fixed;bottom:30px;left:40px;font-size:22px;">
+🤍
+</div>
+
+<div style="position:fixed;bottom:50px;right:40px;font-size:24px;">
+✨
+</div>
+
+<div style="position:fixed;top:45%;left:25px;font-size:18px;">
+🌷
+</div>
+
+<div style="position:fixed;top:60%;right:20px;font-size:18px;">
+🦋
+</div>
+
+<div style="position:fixed;bottom:120px;left:18px;font-size:20px;">
+🌸
+</div>
+
+<div style="position:fixed;bottom:140px;right:18px;font-size:20px;">
+🤍
+</div>
 
 </body>
-  
+
 </html>
